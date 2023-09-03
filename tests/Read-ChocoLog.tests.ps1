@@ -27,7 +27,7 @@ NOTE: Hiding sensitive configuration data! Please double and triple
 2023-06-14 14:22:09,417 57332 [DEBUG] - Configuration: CommandName='upgrade'|CacheLocation='C:\Windows\TEMP\chocolatey'|
 ContainsLegacyPackageInstalls='False'|
 CommandExecutionTimeoutSeconds='2700'|WebRequestTimeoutSeconds='30'|
-Sources='http://127.0.0.1:18081/chocoapi/'|SourceType='normal'|
+Sources=''|SourceType='normal'|
 Debug='False'|Verbose='False'|Trace='False'|Force='False'|Noop='False'|
 HelpRequested='False'|UnsuccessfulParsing='False'|RegularOutput='True'|
 QuietOutput='False'|PromptForConfirmation='False'|
@@ -45,8 +45,8 @@ Chocolatey upgraded 0/1 packages.
   See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
 2023-06-14 14:22:10,115 57332 [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
 2023-06-14 14:22:10,117 57332 [DEBUG] - Exiting with 100
-2023-06-14 14:22:09,410 12345 [DEBUG] - The source 'http://127.0.0.1:18081/chocoapi/' evaluated to a 'normal' source type
-2023-06-14 14:22:09,410 54321 [DEBUG] - The source 'http://127.0.0.1:18081/chocoapi/' evaluated to a 'normal' source type
+2023-06-14 14:22:09,410 12345 [DEBUG] - The source '' evaluated to a 'normal' source type
+2023-06-14 14:22:09,410 54321 [DEBUG] - The source '' evaluated to a 'normal' source type
 '@
     # Create 10 files with 2 random sessions
     0..10 | ForEach-Object {
@@ -81,7 +81,7 @@ Chocolatey upgraded 0/1 packages.
     }
 
     It 'Parses the correct number of lines per session' {
-      $parsed[0].logs.Count | Should -Be 11
+      $parsed[0].logs.Count | Should -Be 10
     }
 
     It 'Detects the exit code' {
@@ -89,15 +89,15 @@ Chocolatey upgraded 0/1 packages.
     }
 
     It 'Detects the right session number' {
-      $parsed[0].id | Should -Be 57332
+      $parsed[0].thread | Should -Be 57332
     }
   }
 
   Context 'For Folder Path' {
     It 'Parses the correct default number of sessions' {
-      # There is one session in each file so there should be a total of 3
-      # 3 for $randID and 3 for $randID2
-      ($multiple).Count | Should -Be 6
+      # There is two sessions in each file and we grab one file by default
+      # 1 for $randID and 1 for $randID2
+      ($multiple).Count | Should -Be 2
     }
 
     It 'Parses the correct number of sessions for increased limit' {

@@ -10,6 +10,10 @@ class ChocoLog : Log4NetLog {
     [int]$Thread,
     [datetime]$startTime,
     [string]$filePath
+  ) : base (
+    $Thread,
+    $startTime,
+    $filePath
   ) {
     $this.thread = $Thread
     $this.startTime = $startTime
@@ -42,14 +46,14 @@ class ChocoLog : Log4NetLog {
       # Configuration pattern
       $configPattern = "Configuration:"
       if ($message.StartsWith($configPattern)) {
-        $arr = $conf.message -replace 'Configuration:' -replace "`n" -split "\|" | Where-Object {
-          -Not [string]::IsNullOrWhiteSpace($message)
+        $arr = $message -replace 'Configuration: ' -replace "`n" -split "\|" | Where-Object {
+          -Not [string]::IsNullOrWhiteSpace($_)
         }
 
         foreach ($entry in $arr) {
           # ToDo: Split is too niave. Need regex.
           $k, $v = $entry -split '='
-          $this.configuration[$k.Trim()] = ($v -join '').Trim()
+          $this.Configuration[$k.Trim()] = ($v -join '').Trim()
         }
       }
     }

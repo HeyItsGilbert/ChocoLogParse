@@ -49,7 +49,7 @@ function Read-ChocoLog {
   [System.Collections.ArrayList]$parsed = @()
   $RegularExpression = Convert-PatternLayout $PatternLayout
 
-  $parsed = $files | ForEach-Object -Process {
+  $files | ForEach-Object -Process {
     $file = $_
     $raw = [System.IO.File]::ReadAllLines($file.FullName)
 
@@ -64,21 +64,20 @@ function Read-ChocoLog {
             $currentSession.endTime = $currentSession.logs[-1].time
             # This updates fields like: cli, environment, and configuration
             $currentSession.ParseSpecialLogs()
-            # $parsed.Add($currentSession) > $null
-            $currentSession
+            $parsed.Add($currentSession) > $null
           }
 
           # This is a different session
           $currentSession = [ChocoLog]::new(
             $m.Groups['thread'].Value,
-            ($m.Groups['time'].Value -replace ',', '.'),
+            ($m.Groups['date'].Value -replace ',', '.'),
             $file
           )
         }
 
         $currentSession.logs.Add(
-          [ChocoLogLine]::new(
-            [Datetime]($m.Groups['time'].Value -replace ',', '.'),
+          [Log4NetLogLine]::new(
+            [Datetime]($m.Groups['date'].Value -replace ',', '.'),
             $m.Groups['thread'].Value,
             $m.Groups['level'].Value,
             $m.Groups['message'].Value
