@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<testsuites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="junit_schema_4.xsd" name="Pester" tests="37" errors="0" failures="0" disabled="2" time="1.783">
+  <testsuite name="/workspaces/ChocoLogParse/tests/Help.tests.ps1" tests="16" errors="0" failures="0" hostname="codespaces-7180a1" id="0" skipped="0" disabled="0" package="/workspaces/ChocoLogParse/tests/Help.tests.ps1" time="1.032">
+    <properties>
+      <property name="machine-name" value="codespaces-7180a1" />
+      <property name="cwd" value="/workspaces/ChocoLogParse/tests" />
+      <property name="platform" value="Linux" />
+      <property name="framework-version" value="5.5.0" />
+      <property name="user-domain" value="" />
+      <property name="clr-version" value="7.0.9" />
+      <property name="junit-version" value="4" />
+      <property name="user" value="root" />
+      <property name="os-version" value="5.15.0-1041-azure" />
+    </properties>
+    <testcase name="Test help for Read-ChocoLog.Help is not auto-generated" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.094" />
+    <testcase name="Test help for Read-ChocoLog.Has description" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.017" />
+    <testcase name="Test help for Read-ChocoLog.Has example code" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.010" />
+    <testcase name="Test help for Read-ChocoLog.Has example help" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.007" />
+    <testcase name="Test help for Read-ChocoLog.Parameter FileLimit.Has description" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.012" />
+    <testcase name="Test help for Read-ChocoLog.Parameter FileLimit.Has correct [mandatory] value" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.029" />
+    <testcase name="Test help for Read-ChocoLog.Parameter FileLimit.Has correct parameter type" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.007" />
+    <testcase name="Test help for Read-ChocoLog.Parameter Filter.Has description" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.007" />
+    <testcase name="Test help for Read-ChocoLog.Parameter Filter.Has correct [mandatory] value" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.016" />
+    <testcase name="Test help for Read-ChocoLog.Parameter Filter.Has correct parameter type" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.008" />
+    <testcase name="Test help for Read-ChocoLog.Parameter Path.Has description" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.019" />
+    <testcase name="Test help for Read-ChocoLog.Parameter Path.Has correct [mandatory] value" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.017" />
+    <testcase name="Test help for Read-ChocoLog.Parameter Path.Has correct parameter type" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.015" />
+    <testcase name="Test help for Read-ChocoLog.Parameter PatternLayout.Has description" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.011" />
+    <testcase name="Test help for Read-ChocoLog.Parameter PatternLayout.Has correct [mandatory] value" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.015" />
+    <testcase name="Test help for Read-ChocoLog.Parameter PatternLayout.Has correct parameter type" status="Passed" classname="/workspaces/ChocoLogParse/tests/Help.tests.ps1" assertions="0" time="0.018" />
+  </testsuite>
+  <testsuite name="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" tests="12" errors="0" failures="0" hostname="codespaces-7180a1" id="1" skipped="2" disabled="0" package="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" time="0.180">
+    <properties>
+      <property name="machine-name" value="codespaces-7180a1" />
+      <property name="cwd" value="/workspaces/ChocoLogParse/tests" />
+      <property name="platform" value="Linux" />
+      <property name="framework-version" value="5.5.0" />
+      <property name="user-domain" value="" />
+      <property name="clr-version" value="7.0.9" />
+      <property name="junit-version" value="4" />
+      <property name="user" value="root" />
+      <property name="os-version" value="5.15.0-1041-azure" />
+    </properties>
+    <testcase name="Module manifest.Validation.Has a valid manifest" status="Passed" classname="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" assertions="0" time="0.008" />
+    <testcase name="Module manifest.Validation.Has a valid name in the manifest" status="Passed" classname="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" assertions="0" time="0.009" />
+    <testcase name="Module manifest.Validation.Has a valid root module" status="Passed" classname="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" assertions="0" time="0.009" />
+    <testcase name="Module manifest.Validation.Has a valid version in the manifest" status="Passed" classname="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" assertions="0" time="0.010" />
+    <testcase name="Module manifest.Validation.Has a valid description" status="Passed" classname="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" assertions="0" time="0.008" />
+    <testcase name="Module manifest.Validation.Has a valid author" status="Passed" classname="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" assertions="0" time="0.007" />
+    <testcase name="Module manifest.Validation.Has a valid guid" status="Passed" classname="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" assertions="0" time="0.022" />
+    <testcase name="Module manifest.Validation.Has a valid copyright" status="Passed" classname="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" assertions="0" time="0.008" />
+    <testcase name="Module manifest.Validation.Has a valid version in the changelog" status="Passed" classname="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" assertions="0" time="0.008" />
+    <testcase name="Module manifest.Validation.Changelog and manifest versions are the same" status="Passed" classname="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" assertions="0" time="0.009" />
+    <testcase name="Git tagging.Is tagged with a valid version" status="Skipped" classname="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" assertions="0" time="0.017">
+      <skipped message=""></skipped>
+    </testcase>
+    <testcase name="Git tagging.Matches manifest version" status="Skipped" classname="/workspaces/ChocoLogParse/tests/Manifest.tests.ps1" assertions="0" time="0.007">
+      <skipped message=""></skipped>
+    </testcase>
+  </testsuite>
+  <testsuite name="/workspaces/ChocoLogParse/tests/Meta.tests.ps1" tests="2" errors="0" failures="0" hostname="codespaces-7180a1" id="2" skipped="0" disabled="0" package="/workspaces/ChocoLogParse/tests/Meta.tests.ps1" time="0.144">
+    <properties>
+      <property name="machine-name" value="codespaces-7180a1" />
+      <property name="cwd" value="/workspaces/ChocoLogParse/tests" />
+      <property name="platform" value="Linux" />
+      <property name="framework-version" value="5.5.0" />
+      <property name="user-domain" value="" />
+      <property name="clr-version" value="7.0.9" />
+      <property name="junit-version" value="4" />
+      <property name="user" value="root" />
+      <property name="os-version" value="5.15.0-1041-azure" />
+    </properties>
+    <testcase name="Text files formatting.File encoding.No text file uses Unicode/UTF-16 encoding" status="Passed" classname="/workspaces/ChocoLogParse/tests/Meta.tests.ps1" assertions="0" time="0.012" />
+    <testcase name="Text files formatting.Indentations.No text file use tabs for indentations" status="Passed" classname="/workspaces/ChocoLogParse/tests/Meta.tests.ps1" assertions="0" time="0.013" />
+  </testsuite>
+  <testsuite name="/workspaces/ChocoLogParse/tests/Read-ChocoLog.tests.ps1" tests="7" errors="0" failures="0" hostname="codespaces-7180a1" id="3" skipped="0" disabled="0" package="/workspaces/ChocoLogParse/tests/Read-ChocoLog.tests.ps1" time="0.426">
+    <properties>
+      <property name="machine-name" value="codespaces-7180a1" />
+      <property name="cwd" value="/workspaces/ChocoLogParse/tests" />
+      <property name="platform" value="Linux" />
+      <property name="framework-version" value="5.5.0" />
+      <property name="user-domain" value="" />
+      <property name="clr-version" value="7.0.9" />
+      <property name="junit-version" value="4" />
+      <property name="user" value="root" />
+      <property name="os-version" value="5.15.0-1041-azure" />
+    </properties>
+    <testcase name="Read-ChocoLog.For Single File.Parses the correct number of sessions" status="Passed" classname="/workspaces/ChocoLogParse/tests/Read-ChocoLog.tests.ps1" assertions="0" time="0.007" />
+    <testcase name="Read-ChocoLog.For Single File.Parses the correct number of lines per session" status="Passed" classname="/workspaces/ChocoLogParse/tests/Read-ChocoLog.tests.ps1" assertions="0" time="0.006" />
+    <testcase name="Read-ChocoLog.For Single File.Detects the exit code" status="Passed" classname="/workspaces/ChocoLogParse/tests/Read-ChocoLog.tests.ps1" assertions="0" time="0.013" />
+    <testcase name="Read-ChocoLog.For Single File.Detects the right session number" status="Passed" classname="/workspaces/ChocoLogParse/tests/Read-ChocoLog.tests.ps1" assertions="0" time="0.019" />
+    <testcase name="Read-ChocoLog.For Folder Path.Parses the correct default number of sessions" status="Passed" classname="/workspaces/ChocoLogParse/tests/Read-ChocoLog.tests.ps1" assertions="0" time="0.020" />
+    <testcase name="Read-ChocoLog.For Folder Path.Parses the correct number of sessions for increased limit" status="Passed" classname="/workspaces/ChocoLogParse/tests/Read-ChocoLog.tests.ps1" assertions="0" time="0.020" />
+    <testcase name="Read-ChocoLog.For Folder Path.Parses the correct number of lines per session" status="Passed" classname="/workspaces/ChocoLogParse/tests/Read-ChocoLog.tests.ps1" assertions="0" time="0.007" />
+  </testsuite>
+</testsuites>
