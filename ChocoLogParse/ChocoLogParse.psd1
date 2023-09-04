@@ -12,7 +12,7 @@
   RootModule = 'ChocoLogParse.psm1'
 
   # Version number of this module.
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.2.0'
 
   # Supported PSEditions
   # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@
   # ProcessorArchitecture = ''
 
   # Modules that must be imported into the global environment prior to importing this module
-  RequiredModules = @(@{ModuleName = "Log4NetParse"; ModuleVersion = "0.2.0"; })
+  RequiredModules = @(@{ModuleName = "Log4NetParse"; ModuleVersion = "0.3.0"; })
 
   # Assemblies that must be loaded prior to importing this module
   # RequiredAssemblies = @()

@@ -21,6 +21,6 @@
         Version = '1.19.1'
     }
     'Log4NetParse' = @{
-        Version = '0.2.0'
+        Version = '0.3.0'
     }
 }
