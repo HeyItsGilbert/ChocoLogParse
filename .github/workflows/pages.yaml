@@ -27,8 +27,12 @@ jobs:
           # Set the output named "docs_changed"
           Write-Host "::set-output name=docs_changed::$HasDiff"
 
+      - name: Copy readme
+        shell: pwsh
+        run: |
+          Copy-Item README.md docs/index.md
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
-        if: steps.check_file_changed.outputs.docs_changed == 'True'
+        if: steps.check_file_changed.outputs.docs_changed == 'True' || ${{ github.event_name == 'workflow_dispatch' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
