@@ -2,6 +2,12 @@
 
 Parses Chocolatey logs into easy to use objects.
 
+![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/ChocoLogParse)
+![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/ChocoLogParse)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/HeyItsGilbert/MazeRats/.github/workflows/CI.yaml?branch=main)
+![PowerShell Gallery](https://img.shields.io/powershellgallery/p/ChocoLogParse)
+
+
 ## Overview
 
 Parsing the Chocolatey logs can be daunting because at first glance it's
