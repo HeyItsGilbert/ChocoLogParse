@@ -10,4 +10,8 @@ foreach ($import in @($enums + $classes + $public )) {
   }
 }
 
+# Add our custom formatter that needed classes first
+$format = Join-Path -Path $PSScriptRoot -ChildPath 'ChocoLog.format.ps1xml'
+Update-FormatData -PrependPath $format
+
 Export-ModuleMember -Function $public.Basename
