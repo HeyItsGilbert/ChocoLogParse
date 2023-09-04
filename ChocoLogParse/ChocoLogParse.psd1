@@ -12,7 +12,7 @@
   RootModule = 'ChocoLogParse.psm1'
 
   # Version number of this module.
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.2.0'
 
   # Supported PSEditions
   # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@
   # ProcessorArchitecture = ''
 
   # Modules that must be imported into the global environment prior to importing this module
-  RequiredModules = @(@{ModuleName = "Log4NetParse"; ModuleVersion = "0.2.0"; })
+  RequiredModules = @(@{ModuleName = "Log4NetParse"; ModuleVersion = "0.3.0"; })
 
   # Assemblies that must be loaded prior to importing this module
   # RequiredAssemblies = @()
@@ -95,25 +95,31 @@
     PSData = @{
 
       # Tags applied to this module. These help with module discovery in online galleries.
-      # Tags = @()
+      Tags = @(
+        'PSEdition_Desktop',
+        'PSEdition_Core',
+        'Windows',
+        'Linux',
+        'MacOS'
+      )
 
       # A URL to the license for this module.
-      # LicenseUri = ''
+      LicenseUri = 'https://github.com/HeyItsGilbert/ChocoLogParse/blob/master/LICENSE'
 
       # A URL to the main website for this project.
-      # ProjectUri = ''
+      ProjectUri = 'https://github.com/HeyItsGilbert/ChocoLogParse/'
 
       # A URL to an icon representing this module.
-      # IconUri = ''
+      IconUri = 'https://raw.githubusercontent.com/HeyItsGilbert/ChocoLogParse/main/static/'
 
       # ReleaseNotes of this module
-      # ReleaseNotes = ''
+      ReleaseNotes = 'https://github.com/HeyItsGilbert/ChocoLogParse/blob/master/CHANGELOG.md'
 
       # Prerelease string of this module
       # Prerelease = ''
 
       # Flag to indicate whether the module requires explicit user acceptance for install/update/save
-      # RequireLicenseAcceptance = $false
+      RequireLicenseAcceptance = $false
 
       # External dependent modules of this module
       ExternalModuleDependencies = @("Log4NetParse")
@@ -123,7 +129,7 @@
   } # End of PrivateData hashtable
 
   # HelpInfo URI of this module
-  # HelpInfoURI = ''
+  HelpInfoURI = 'https://heyitsgilbert.github.io/ChocoLogParse/'
 
   # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
   # DefaultCommandPrefix = ''
