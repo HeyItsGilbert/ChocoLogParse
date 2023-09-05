@@ -2,58 +2,65 @@
 
 ## about_ChocoLogParse
 
-```
-ABOUT TOPIC NOTE:
-The first header of the about topic should be the topic name.
-The second header contains the lookup name used by the help system.
-
-IE:
-# Some Help Topic Name
-## SomeHelpTopicFileName
-
-This will be transformed into the text file
-as `about_SomeHelpTopicFileName`.
-Do not include file extensions.
-The second header should have no spaces.
-```
-
 # SHORT DESCRIPTION
-{{ Short Description Placeholder }}
 
-```
-ABOUT TOPIC NOTE:
-About topics can be no longer than 80 characters wide when rendered to text.
-Any topics greater than 80 characters will be automatically wrapped.
-The generated about topic will be encoded UTF-8.
-```
+This module will parse Chocolatey logs and create easy to filter PS objects.
 
 # LONG DESCRIPTION
-{{ Long Description Placeholder }}
+This module uses the Log4NetParse module to create a RegEx and parse the
+Chocolatey logs. The goal is to turn a flat file into a structured object that
+makes it easier to traverse from the PowerShell command line.
 
 ## Optional Subtopics
-{{ Optional Subtopic Placeholder }}
 
 # EXAMPLES
-{{ Code or descriptive examples of how to leverage the functions described. }}
+
+Read the latest Chocolatey and parse it.
+
+```powershell
+$logs = Read-ChocoLog
+```
+
+Find recent packages that didn't exit successfully (0)
+
+```powershell
+$logs | Where-Object { $_.exitcode -ne 0 }
+```
+
+Read logs for a specific (results cut short for brevity)
+
+```powershell
+> $logs[0].logs
+Time         Level Message
+----         ----- -------
+12:00:01.800 DEBUG XmlConfiguration is now operational
+12:00:01.833 DEBUG Adding new type 'WebPiService' for type 'ISourceRunner' from assembly 'choco'
+12:00:01.834 DEBUG Adding new type 'WindowsFeatureService' for type 'ISourceRunner' from assembly 'choco'
+12:00:01.834 DEBUG Adding new type 'CygwinService' for type 'ISourceRunner' from assembly 'choco'
+12:00:01.835 DEBUG Adding new type 'PythonService' for type 'ISourceRunner' from assembly 'choco'
+...
+```
 
 # NOTE
-{{ Note Placeholder - Additional information that a user needs to know.}}
+
+We attempt to capture additional info for each thread such as the CLI executed.
 
 # TROUBLESHOOTING NOTE
-{{ Troubleshooting Placeholder - Warns users of bugs}}
 
-{{ Explains behavior that is likely to change with fixes }}
+If you've customized your log4net config (not likely but possible) then you need
+to supply a custom pattern to your `Read-ChocoLog` command.
+
+See [choco Issue 1378](https://github.com/chocolatey/choco/issues/1378)
 
 # SEE ALSO
-{{ See also placeholder }}
 
-{{ You can also list related articles, blogs, and video URLs. }}
+[Chocolatey](https://chocolatey.org/)
+[log4net](https://logging.apache.org/log4net/)
 
 # KEYWORDS
-{{List alternate names or titles for this topic that readers might use.}}
 
-- {{ Keyword Placeholder }}
-- {{ Keyword Placeholder }}
-- {{ Keyword Placeholder }}
-- {{ Keyword Placeholder }}
-
+- Chocolatey
+- Log4Net
+- ChocoLog
+- Log4NetLog
+- Log4NetLine
