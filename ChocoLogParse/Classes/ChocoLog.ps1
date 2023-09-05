@@ -29,6 +29,10 @@ class ChocoLog : Log4NetLog {
 
   # This parses all the logs for entries that are part of the class
   [void] ParseSpecialLogs() {
+    # Set the end time here since we are done parsing
+    $this.endTime = $this.logs[-1].time
+
+    # Detect known patterns
     $this.logs | ForEach-Object {
       $message = $_.message
       # Command Line Pattern
@@ -51,9 +55,29 @@ class ChocoLog : Log4NetLog {
         }
 
         foreach ($entry in $arr) {
-          # ToDo: Split is too niave. Need regex.
+          # Split on the `=`
+          # example: Features.UseEnhancedExitCodes='False'
           $k, $v = $entry -split '='
-          $this.Configuration[$k.Trim()] = ($v -join '').Trim()
+          $key = $k.Trim()
+          $value = ($v -join '').Trim(" ", "'")
+
+          # Let's treat foo.bar and a subkey because I'm a masochist
+          if ($key.Contains('.')) {
+            # AFAICT there is only ever one subkey
+            # WARNING: Split is doing regex so you have to escape the period.
+            $parent, $subkey = $key.Split('.')
+
+            if (-Not $this.Configuration($parent)) {
+              $this.Configuration[$parent] = @{}
+            }
+
+            $this.Configuration[$parent][$subkey] = $value
+
+          } else {
+            # Top level key, keep it simple
+            $this.Configuration[$key] = $value
+          }
+
         }
       }
     }

@@ -49,6 +49,8 @@ function Read-ChocoLog {
   }
 
   [System.Collections.ArrayList]$parsed = @()
+  $detected = [System.Collections.Generic.List[int]]::new()
+
   $RegularExpression = Convert-PatternLayout $PatternLayout
 
   $files | ForEach-Object -Process {
@@ -60,29 +62,33 @@ function Read-ChocoLog {
       # Write-Debug $line
       $m = $RegularExpression.match($line)
       if ($m.Success) {
+        $threadMatch = $m.Groups['thread'].Value
         # If it matches the regex, tag it
-        if ($m.Groups['thread'].Value -ne $currentSession.thread) {
-          # TODO: Look up if current thread exists in Parsed and append to that
-          # https://github.com/HeyItsGilbert/ChocoLogParse/issues/3
+        if ($threadMatch -ne $currentSession.thread) {
+          # This is a different thread
+
+          # Save the current session to the parsed list
           if ($currentSession) {
-            $currentSession.endTime = $currentSession.logs[-1].time
-            # This updates fields like: cli, environment, and configuration
-            $currentSession.ParseSpecialLogs()
             $parsed.Add($currentSession) > $null
           }
 
-          # This is a different session
-          $currentSession = [ChocoLog]::new(
-            $m.Groups['thread'].Value,
-            ($m.Groups['date'].Value -replace ',', '.'),
-            $file
-          )
+          # Look up if current thread exists in Parsed and append to that if so
+          if ($detected.Contains($threadMatch)) {
+            $currentSession = $parsed | Where-Object { $_.Thread -eq $threadMatch }
+          } else {
+            # We haven't seen this thread before, let's make a new object
+            $currentSession = [ChocoLog]::new(
+              $threadMatch,
+              ($m.Groups['date'].Value -replace ',', '.'),
+              $file
+            )
+          }
         }
 
         $currentSession.logs.Add(
           [Log4NetLogLine]::new(
             [Datetime]($m.Groups['date'].Value -replace ',', '.'),
-            $m.Groups['thread'].Value,
+            $threadMatch,
             $m.Groups['level'].Value,
             $m.Groups['message'].Value
           )) > $null
@@ -101,6 +107,12 @@ function Read-ChocoLog {
   # Write out the last log line!
   if (-Not $parsed.Contains($currentSession)) {
     $parsed.Add($currentSession) > $null
+  }
+
+  # Doing this at the end since threads can get mixed
+  $parsed | ForEach-Object {
+    # This updates fields like: cli, environment, and configuration
+    $_.ParseSpecialLogs()
   }
 
   # Return the whole parsed object

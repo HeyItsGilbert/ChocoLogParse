@@ -33,6 +33,7 @@ HelpRequested='False'|UnsuccessfulParsing='False'|RegularOutput='True'|
 QuietOutput='False'|PromptForConfirmation='False'|
 DisableCompatibilityChecks='False'|AcceptLicense='True'|
 AllowUnofficialBuild='False'|Input='zoom'|AllVersions='False'|
+Features.AllowEmptyChecksums='False'|Features.UsePackageExitCodes='True'|
 SkipPackageInstallProvider='False'|SkipHookScripts='False'|
 2023-06-14 14:22:09,418 57332 [DEBUG] - _ Chocolatey:ChocolateyUpgradeCommand - Normal Run Mode _
 2023-06-14 14:22:09,422 57332 [INFO ] - Upgrading the following packages:
@@ -90,6 +91,10 @@ Chocolatey upgraded 0/1 packages.
 
     It 'Detects the right session number' {
       $parsed[0].thread | Should -Be 57332
+    }
+
+    It 'Has Configuration with Subkeys' {
+      $parsed.Configuration['Features']['UsePackageExitCodes'] | Should -Be 'True'
     }
   }
 
