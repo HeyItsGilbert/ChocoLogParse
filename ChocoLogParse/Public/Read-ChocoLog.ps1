@@ -1,26 +1,28 @@
 <#
 .SYNOPSIS
-  Parses a chocolatey into an object that is easier to search and filter.
+  Parses a Chocolatey log into an object that is easier to search and filter.
 .DESCRIPTION
-  Reads chocolatey log(s) and creates a new set of custom objects. It highlights
-  details that make it easier to search and filter logs.
+  Reads Chocolatey log(s) and creates a new set of custom objects. It highlights
+  details that make it easier to search and filter.
 .NOTES
   Works for Windows PowerShell and PowerShell Core. This works on Linux.
 .LINK
-  Specify a URI to a help page, this will show when Get-Help -Online is used.
+  https://heyitsgilbert.github.io/ChocoLogParse/en-US/Read-ChocoLog/
 .EXAMPLE
   Read-ChocoLog
 
   This will read the latest Chocolatey.log on the machine.
 .PARAMETER Path
-  The log you want to parse. This will default to the latest local log.
+  The log path you want to parse. This will default to the latest local log.
+  This can be a directory of logs.
 .PARAMETER FileLimit
-  How many files should we parse a given folder path?
+  The number of files the command should parse given a folder path.
 .PARAMETER Filter
   The filter passed to Get Child Item. Default to 'chocolatey*.log.'
 .PARAMETER PatternLayout
-  The log4net pattern layour used to parse the log.
-  Should contain capture groups for time, session, level, and message.
+  The log4net pattern layout used to parse the log. It is very unlikely that you
+  need to supply this. The code expects pattern names: time, session, level, and
+  message.
 #>
 function Read-ChocoLog {
   [OutputType([System.Collections.ArrayList])]
@@ -60,6 +62,8 @@ function Read-ChocoLog {
       if ($m.Success) {
         # If it matches the regex, tag it
         if ($m.Groups['thread'].Value -ne $currentSession.thread) {
+          # TODO: Look up if current thread exists in Parsed and append to that
+          # https://github.com/HeyItsGilbert/ChocoLogParse/issues/3
           if ($currentSession) {
             $currentSession.endTime = $currentSession.logs[-1].time
             # This updates fields like: cli, environment, and configuration

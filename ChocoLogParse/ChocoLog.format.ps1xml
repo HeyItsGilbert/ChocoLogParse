@@ -13,7 +13,7 @@
             <Width>18</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ID</Label>
+            <Label>Thread</Label>
             <Width>5</Width>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -35,10 +35,17 @@
                 <FormatString>{0:MM/dd hh:mm:ss.fff}</FormatString>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>id</PropertyName>
+                <PropertyName>thread</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>exitCode</PropertyName>
+                <ScriptBlock>
+                $style = if ($_.exitCode -eq 0) {
+                  $PSStyle.Foreground.White
+                } else {
+                  $PSStyle.Foreground.Yellow
+                }
+                [String]::Format("{0}{1}{2}", $bg, $_.exitCode, $PSStyle.Reset)
+                </ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>
@@ -49,6 +56,7 @@
                 <PropertyName>logs</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
+            <Wrap/>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>

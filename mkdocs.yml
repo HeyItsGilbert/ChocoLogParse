@@ -2,3 +2,6 @@ site_name: "ChocoLogParse PowerShell Module"
 site_url: https://heyitsgilbert.github.io/ChocoLogParse/
 repo_url: https://github.com/HeyItsGilbert/ChocoLogParse
 theme: readthedocs
+nav:
+  - Home: 'index.md'
+  - Changelog: 'https://github.com/HeyItsGilbert/ChocoLogParse/blob/main/CHANGELOG.md'
