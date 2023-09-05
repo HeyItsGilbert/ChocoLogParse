@@ -39,6 +39,14 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>exitCode</PropertyName>
+                <ScriptBlock>
+                $style = if ($_.exitCode -eq 0) {
+                  $PSStyle.Foreground.White
+                } else {
+                  $PSStyle.Foreground.Yellow
+                }
+                [String]::Format("{0}{1}{2}", $bg, $_.exitCode, $PSStyle.Reset)
+                </ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>
@@ -49,6 +57,7 @@
                 <PropertyName>logs</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
+            <Wrap/>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
