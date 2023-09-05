@@ -5,4 +5,7 @@ theme: readthedocs
 nav:
   - Home: 'index.md'
   - Changelog: 'https://github.com/HeyItsGilbert/ChocoLogParse/blob/main/CHANGELOG.md'
-  - 'en-US/'
+  - en-US/
+plugins:
+  - search
+  - include_dir_to_nav
