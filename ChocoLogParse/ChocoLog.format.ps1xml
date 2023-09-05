@@ -13,7 +13,7 @@
             <Width>18</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ID</Label>
+            <Label>Thread</Label>
             <Width>5</Width>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -35,7 +35,7 @@
                 <FormatString>{0:MM/dd hh:mm:ss.fff}</FormatString>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>id</PropertyName>
+                <PropertyName>thread</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>exitCode</PropertyName>
