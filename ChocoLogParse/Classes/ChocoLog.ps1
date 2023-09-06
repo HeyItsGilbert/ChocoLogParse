@@ -34,52 +34,57 @@ class ChocoLog : Log4NetLog {
 
     # Detect known patterns
     $this.logs | ForEach-Object {
-      $message = $_.message
-      # Command Line Pattern
-      $cliPattern = 'Command line: '
-      if ($message.StartsWith($cliPattern)) {
-        $this.cli = $message -replace $cliPattern
+      switch ($_.message) {
+        { $_.StartsWith('Command line: ') } { $this.SetCli($_) }
+        { $_.StartsWith('Exiting with ') } { $this.SetExitCode($_) }
+        { $_.StartsWith('Configuration:') } {
+          $this.ParseConfiguration($_)
+        }
+        Default {}
       }
 
-      # Exit code Pattern
-      $exitPattern = 'Exiting with '
-      if ($message.StartsWith($exitPattern)) {
-        $this.exitCode = $message -replace $exitPattern
-      }
+    }
+  }
 
-      # Configuration pattern
-      $configPattern = "Configuration:"
-      if ($message.StartsWith($configPattern)) {
-        $arr = $message -replace 'Configuration: ' -replace "`n" -split "\|" | Where-Object {
-          -Not [string]::IsNullOrWhiteSpace($_)
+  [void] SetCli($message) {
+    $this.cli = $message -replace 'Command line: '
+  }
+
+  [void] SetExitCode($message) {
+    $this.exitCode = $message -replace 'Exiting with '
+  }
+
+  [void] ParseConfiguration($message) {
+    $clean = $message -replace 'Configuration: ' -replace "`n"
+    $entries = $clean -split "\|" | Where-Object {
+      -Not [string]::IsNullOrWhiteSpace($_)
+    }
+
+    $configHash = @{}
+
+    foreach ($entry in $entries) {
+      # Split on the `=`
+      # example: Features.UseEnhancedExitCodes='False'
+      $k, $v = $entry -split '='
+      $key = $k.Trim()
+      $value = ($v -join '').Trim(" ", "'")
+
+      # Let's treat foo.bar and a subkey because I'm a masochist
+      if ($key.Contains(".")) {
+        # AFAICT there is only ever one subkey
+        # WARNING: Split is doing regex so you have to escape the period.
+        $parent, $subkey = $key.Split('.')
+
+        if (-Not $configHash.ContainsKey($parent)) {
+          $configHash[$parent] = @{}
         }
 
-        foreach ($entry in $arr) {
-          # Split on the `=`
-          # example: Features.UseEnhancedExitCodes='False'
-          $k, $v = $entry -split '='
-          $key = $k.Trim()
-          $value = ($v -join '').Trim(" ", "'")
-
-          # Let's treat foo.bar and a subkey because I'm a masochist
-          if ($key.Contains('.')) {
-            # AFAICT there is only ever one subkey
-            # WARNING: Split is doing regex so you have to escape the period.
-            $parent, $subkey = $key.Split('.')
-
-            if (-Not $this.Configuration($parent)) {
-              $this.Configuration[$parent] = @{}
-            }
-
-            $this.Configuration[$parent][$subkey] = $value
-
-          } else {
-            # Top level key, keep it simple
-            $this.Configuration[$key] = $value
-          }
-
-        }
+        $configHash[$parent][$subkey] = $value
+      } else {
+        # Top level key, keep it simple
+        $configHash[$key] = $value
       }
     }
+    $this.Configuration = $configHash
   }
 }

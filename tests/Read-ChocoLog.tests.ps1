@@ -45,9 +45,9 @@ SkipPackageInstallProvider='False'|SkipHookScripts='False'|
 Chocolatey upgraded 0/1 packages.
   See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
 2023-06-14 14:22:10,115 57332 [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
-2023-06-14 14:22:10,117 57332 [DEBUG] - Exiting with 100
 2023-06-14 14:22:09,410 12345 [DEBUG] - The source '' evaluated to a 'normal' source type
 2023-06-14 14:22:09,410 54321 [DEBUG] - The source '' evaluated to a 'normal' source type
+2023-06-14 14:22:10,117 57332 [DEBUG] - Exiting with 100
 '@
     # Create 10 files with 2 random sessions
     0..10 | ForEach-Object {
@@ -94,7 +94,7 @@ Chocolatey upgraded 0/1 packages.
     }
 
     It 'Has Configuration with Subkeys' {
-      $parsed.Configuration['Features']['UsePackageExitCodes'] | Should -Be 'True'
+      $parsed[0].Configuration['Features']['UsePackageExitCodes'] | Should -Be 'True'
     }
   }
 

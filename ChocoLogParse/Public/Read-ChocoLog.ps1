@@ -77,6 +77,7 @@ function Read-ChocoLog {
             $currentSession = $parsed | Where-Object { $_.Thread -eq $threadMatch }
           } else {
             # We haven't seen this thread before, let's make a new object
+            $detected.Add($threadMatch) > $null
             $currentSession = [ChocoLog]::new(
               $threadMatch,
               ($m.Groups['date'].Value -replace ',', '.'),
