@@ -14,6 +14,7 @@ Parses a Chocolatey log into an object that is easier to search and filter.
 
 ```
 Read-ChocoLog [[-Path] <String[]>] [[-FileLimit] <Int32>] [[-Filter] <String>] [[-PatternLayout] <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,6 +99,9 @@ Default value: %date %thread [%-5level] - %message
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.0] Improved Configuration Property
+
+The configuration propertynow supports sub keys to improve filtering.
+
+This also includes a fix to handle multiple threads being mixed.
+
 ## [0.2.0] Formatting
 
 This adds a ChocoLog specific format. The goal is to show relevant info such as

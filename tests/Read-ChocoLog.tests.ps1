@@ -33,6 +33,7 @@ HelpRequested='False'|UnsuccessfulParsing='False'|RegularOutput='True'|
 QuietOutput='False'|PromptForConfirmation='False'|
 DisableCompatibilityChecks='False'|AcceptLicense='True'|
 AllowUnofficialBuild='False'|Input='zoom'|AllVersions='False'|
+Features.AllowEmptyChecksums='False'|Features.UsePackageExitCodes='True'|
 SkipPackageInstallProvider='False'|SkipHookScripts='False'|
 2023-06-14 14:22:09,418 57332 [DEBUG] - _ Chocolatey:ChocolateyUpgradeCommand - Normal Run Mode _
 2023-06-14 14:22:09,422 57332 [INFO ] - Upgrading the following packages:
@@ -44,9 +45,9 @@ SkipPackageInstallProvider='False'|SkipHookScripts='False'|
 Chocolatey upgraded 0/1 packages.
   See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
 2023-06-14 14:22:10,115 57332 [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
-2023-06-14 14:22:10,117 57332 [DEBUG] - Exiting with 100
 2023-06-14 14:22:09,410 12345 [DEBUG] - The source '' evaluated to a 'normal' source type
 2023-06-14 14:22:09,410 54321 [DEBUG] - The source '' evaluated to a 'normal' source type
+2023-06-14 14:22:10,117 57332 [DEBUG] - Exiting with 100
 '@
     # Create 10 files with 2 random sessions
     0..10 | ForEach-Object {
@@ -90,6 +91,10 @@ Chocolatey upgraded 0/1 packages.
 
     It 'Detects the right session number' {
       $parsed[0].thread | Should -Be 57332
+    }
+
+    It 'Has Configuration with Subkeys' {
+      $parsed[0].Configuration['Features']['UsePackageExitCodes'] | Should -Be 'True'
     }
   }
 
