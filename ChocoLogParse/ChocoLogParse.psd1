@@ -12,7 +12,7 @@
   RootModule = 'ChocoLogParse.psm1'
 
   # Version number of this module.
-  ModuleVersion = '0.3.0'
+  ModuleVersion = '0.4.0'
 
   # Supported PSEditions
   # CompatiblePSEditions = @()
@@ -122,7 +122,7 @@
       RequireLicenseAcceptance = $false
 
       # External dependent modules of this module
-      ExternalModuleDependencies = @("Log4NetParse")
+      # ExternalModuleDependencies = @("Log4NetParse")
 
     } # End of PSData hashtable
 

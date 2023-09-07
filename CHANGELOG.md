@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.4.0] Fix external dependency
+
+The dependency on Log4Net was added incorrectly as an external dependency.
+
 ## [0.3.0] Improved Configuration Property
 
 The configuration propertynow supports sub keys to improve filtering.
