@@ -17,7 +17,7 @@ class ChocoLog : Log4NetLog {
   ) {
     $this.thread = $Thread
     $this.startTime = $startTime
-    $this.logs = [System.Collections.ArrayList]::new()
+    $this.logs = [System.Collections.Generic.List[Log4NetLogLine]]::new()
     $this.filePath = $filePath
     $this.Configuration = @{}
     if ($filePath -like "*summary*") {

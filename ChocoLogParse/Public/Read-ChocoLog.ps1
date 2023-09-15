@@ -25,7 +25,8 @@
   message.
 #>
 function Read-ChocoLog {
-  [OutputType([System.Collections.ArrayList])]
+  # This makes PlatyPS sad.
+  [OutputType([System.Collections.Generic.List[ChocoLog]])]
   param (
     [ValidateScript({
         if (-Not ($_ | Test-Path) ) {
@@ -48,7 +49,7 @@ function Read-ChocoLog {
     $files = Get-ChildItem -Path $Path -Filter $Filter | Sort-Object -Property LastWriteTime | Select-Object -Last $FileLimit
   }
 
-  [System.Collections.ArrayList]$parsed = @()
+  [System.Collections.Generic.List[ChocoLog]]$parsed = @()
   $detected = [System.Collections.Generic.List[int]]::new()
 
   $RegularExpression = Convert-PatternLayout $PatternLayout
