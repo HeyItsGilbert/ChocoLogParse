@@ -35,7 +35,7 @@ function Read-ChocoLog {
         return $true
       })]
     [string[]]
-    $Path = 'C:\ProgramData\chocolatey\logs\',
+    $Path = "$($env:ChocolateyInstall)\logs\",
     [int]
     $FileLimit = 1,
     [String]
