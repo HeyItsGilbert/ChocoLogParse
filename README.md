@@ -2,10 +2,14 @@
 
 Parses Chocolatey logs into easy to use objects.
 
-![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/ChocoLogParse)
+[![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/ChocoLogParse)
 ![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/ChocoLogParse)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/HeyItsGilbert/ChocoLogParse/.github/workflows/CI.yaml?branch=main)
-![PowerShell Gallery](https://img.shields.io/powershellgallery/p/ChocoLogParse)
+![PowerShell Gallery](https://img.shields.io/powershellgallery/p/ChocoLogParse)](https://www.powershellgallery.com/packages/ChocoLogParse/)
+
+Docs automatically updated at [heyitsgilbert.github.io/ChocoLogParse](https://heyitsgilbert.github.io/ChocoLogParse/)
+
+Available via the [PowerShell Gallery](https://www.powershellgallery.com/packages/ChocoLogParse/)
 
 ## Overview
 
@@ -51,6 +55,7 @@ key information at the top.
 ```powershell
 Get-ChocoLogEntry
 ```
+Get more details at [heyitsgilbert.github.io/ChocoLogParse](https://heyitsgilbert.github.io/ChocoLogParse/)
 
 ## Building and Testing
 
