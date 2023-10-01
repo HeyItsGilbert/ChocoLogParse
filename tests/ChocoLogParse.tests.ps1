@@ -44,6 +44,7 @@ SkipPackageInstallProvider='False'|SkipHookScripts='False'|
 Chocolatey upgraded 0/1 packages.
   See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
 2023-06-14 14:22:10,115 57332 [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
+2023-06-14 14:22:10,116 57332 [DEBUG] - Exiting with 100
 2023-06-14 14:22:09,410 12345 [DEBUG] - The source '' evaluated to a 'normal' source type
 2023-06-14 14:22:09,411 54321 [DEBUG] - .
 NOTE: Hiding sensitive configuration data! Please double and triple
@@ -70,7 +71,7 @@ SkipPackageInstallProvider='False'|SkipHookScripts='False'|
 Chocolatey upgraded 0/1 packages.
   See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
 2023-06-14 14:22:10,115 54321 [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
-2023-06-14 14:22:10,117 54321 [DEBUG] - Exiting with 100
+2023-06-14 14:22:10,117 54321 [DEBUG] - Exiting with 900
 '@
   # Create 10 files with 2 random sessions
   0..10 | ForEach-Object {
@@ -159,7 +160,7 @@ Describe 'Get-ChocoLogEntry' {
     }
 
     It 'Detects the exit code' {
-      $parsed.exitCode | Should -Be 100
+      $parsed.exitCode | Should -Be 900
     }
 
     It 'Detects the right session number' {

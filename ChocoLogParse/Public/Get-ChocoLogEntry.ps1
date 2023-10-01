@@ -5,14 +5,21 @@
   Reads the latest log file and grabs the last session
 .NOTES
   Works for Windows PowerShell and PowerShell Core (e.g. 7).
-.LINK
-  https://heyitsgilbert.github.io/ChocoLogParse/en-US/Get-ChocoLogEntry/
 .EXAMPLE
   Get-ChocoLogEntry
 
   Grabs the laste entry from the latest log
 .PARAMETER Report
   This changes the output to be more friendly for reporting
+.PARAMETER Path
+  The log path you want to parse. This will default to the latest local log.
+  This can be a directory of logs.
+.PARAMETER Filter
+  The filter passed to Get Child Item. Default to 'chocolatey*.log.'
+.PARAMETER PatternLayout
+  The log4net pattern layout used to parse the log. It is very unlikely that you
+  need to supply this. The code expects pattern names: time, session, level, and
+  message.
 #>
 function Get-ChocoLogEntry {
   [CmdletBinding()]

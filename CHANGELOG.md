@@ -7,8 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.5.0] Add Get-ChocoLogEntry
 
-Add a new cmdlet that grabs the latest log. Has a report flag that may make it
-convenient for reporting back to tools.
+- Add a new cmdlet that grabs the latest log.
+  [#7](https://github.com/HeyItsGilbert/ChocoLogParse/issues/7)
+  - Has a report flag that may make it convenient for reporting back to tools.
+- Use environment variable `ChocolateyInstall` for default log location.
+  [#8](https://github.com/HeyItsGilbert/ChocoLogParse/issues/8)
+- Replace ArrayList types with GenericList
+  [#9](https://github.com/HeyItsGilbert/ChocoLogParse/issues/9)
 
 ## [0.4.0] Fix external dependency
 
@@ -19,6 +24,7 @@ The dependency on Log4Net was added incorrectly as an external dependency.
 The configuration property now supports sub keys to improve filtering.
 
 This also includes a fix to handle multiple threads being mixed.
+[#3](https://github.com/HeyItsGilbert/ChocoLogParse/issues/3)
 
 ## [0.2.0] Formatting
 

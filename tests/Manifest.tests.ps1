@@ -63,23 +63,3 @@ Describe 'Module manifest' {
         }
     }
 }
-
-Describe 'Git tagging' -Skip {
-    BeforeAll {
-        $gitTagVersion = $null
-
-        if ($git = Get-Command git -CommandType Application -ErrorAction SilentlyContinue) {
-            $thisCommit = & $git log --decorate --oneline HEAD~1..HEAD
-            if ($thisCommit -match 'tag:\s*(\d+(?:\.\d+)*)') { $gitTagVersion = $matches[1] }
-        }
-    }
-
-    It 'Is tagged with a valid version' {
-        $gitTagVersion | Should -Not -BeNullOrEmpty
-        $gitTagVersion -as [Version] | Should -Not -BeNullOrEmpty
-    }
-
-    It 'Matches manifest version' {
-        $manifestData.Version -as [Version] | Should -Be ( $gitTagVersion -as [Version])
-    }
-}
