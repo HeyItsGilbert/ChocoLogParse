@@ -1,24 +1,20 @@
 using module Log4NetParse
 
 class ChocoLog : Log4NetLog {
-  [string]$cli
-  [string]$exitCode
-  [LogType]$logType
+  [string]$CLI
+  [string]$ExitCode
+  [LogType]$LogType
   [hashtable]$Configuration
 
   ChocoLog(
     [int]$Thread,
-    [datetime]$startTime,
     [string]$filePath
   ) : base (
     $Thread,
-    $startTime,
     $filePath
   ) {
-    $this.thread = $Thread
-    $this.startTime = $startTime
-    $this.logs = [System.Collections.Generic.List[Log4NetLogLine]]::new()
-    $this.filePath = $filePath
+    $this.Thread = $Thread
+    $this.FilePath = $filePath
     $this.Configuration = @{}
     if ($filePath -like "*summary*") {
       $this.logType = [LogType]::Summary
@@ -30,10 +26,12 @@ class ChocoLog : Log4NetLog {
   # This parses all the logs for entries that are part of the class
   [void] ParseSpecialLogs() {
     # Set the end time here since we are done parsing
-    $this.endTime = $this.logs[-1].time
+    $this._logs.Sort()
+    $this.StartTime = $this._logs[0].time
+    $this.EndTime = $this._logs[-1].time
 
     # Detect known patterns
-    $this.logs | ForEach-Object {
+    $this._logs | ForEach-Object {
       switch ($_.message) {
         { $_.StartsWith('Command line: ') } { $this.SetCli($_) }
         { $_.StartsWith('Exiting with ') } { $this.SetExitCode($_) }
@@ -42,7 +40,6 @@ class ChocoLog : Log4NetLog {
         }
         Default {}
       }
-
     }
   }
 

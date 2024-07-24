@@ -12,7 +12,7 @@
   RootModule = 'ChocoLogParse.psm1'
 
   # Version number of this module.
-  ModuleVersion = '0.5.0'
+  ModuleVersion = '1.0.0'
 
   # Supported PSEditions
   # CompatiblePSEditions = @()
@@ -24,7 +24,7 @@
   Author = 'Gilbert Sanchez'
 
   # Company or vendor of this module
-  CompanyName = 'Unknown'
+  CompanyName = 'Gilbert Sanchez'
 
   # Copyright statement for this module
   Copyright = '(c) Gilbert Sanchez. All rights reserved.'
@@ -51,7 +51,7 @@
   # ProcessorArchitecture = ''
 
   # Modules that must be imported into the global environment prior to importing this module
-  RequiredModules = @(@{ModuleName = "Log4NetParse"; ModuleVersion = "0.3.0"; })
+  RequiredModules = @(@{ModuleName = "Log4NetParse"; ModuleVersion = "1.1.1"; })
 
   # Assemblies that must be loaded prior to importing this module
   # RequiredAssemblies = @()

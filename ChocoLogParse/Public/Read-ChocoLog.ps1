@@ -43,61 +43,56 @@ function Read-ChocoLog {
     [string]
     $PatternLayout = '%date %thread [%-5level] - %message'
   )
-
   $files = Get-Item -Path $Path
   if ($files.PSIsContainer) {
-    $files = Get-ChildItem -Path $Path -Filter $Filter | Sort-Object -Property LastWriteTime | Select-Object -Last $FileLimit
+    $files = Get-ChildItem -Path $Path -Filter $Filter |
+      Sort-Object -Property LastWriteTime | Select-Object -Last $FileLimit
   }
+  Write-Verbose "Found files: $($files -join ',')"
 
-  [System.Collections.Generic.List[ChocoLog]]$parsed = @()
-  $detected = [System.Collections.Generic.List[int]]::new()
+  $parsed = @{}
 
-  $RegularExpression = Convert-PatternLayout $PatternLayout
-
+  # Get the regex for the Log4Net PatternLayout
+  $RegularExpression = Convert-PatternLayout -PatternLayout $PatternLayout
   $files | ForEach-Object -Process {
     $file = $_
+    Write-Verbose "Reading over file: $file"
     $raw = [System.IO.File]::ReadAllLines($file.FullName)
-
+    Write-Verbose "Lines read: $($raw.Count)"
     # Iterate over each line
     foreach ($line in $raw) {
-      # Write-Debug $line
+      Write-Debug $line
       $m = $RegularExpression.match($line)
       if ($m.Success) {
-        $threadMatch = $m.Groups['thread'].Value
-        # If it matches the regex, tag it
-        if ($threadMatch -ne $currentSession.thread) {
-          # This is a different thread
-
-          # Save the current session to the parsed list
-          if ($currentSession) {
-            $parsed.Add($currentSession) > $null
-          }
-
-          # Look up if current thread exists in Parsed and append to that if so
-          if ($detected.Contains($threadMatch)) {
-            $currentSession = $parsed | Where-Object { $_.Thread -eq $threadMatch }
-          } else {
-            # We haven't seen this thread before, let's make a new object
-            $detected.Add($threadMatch) > $null
-            $currentSession = [ChocoLog]::new(
+        [int]$threadMatch = $m.Groups['thread'].Value
+        # Replace comma with period to make it a valid datetime
+        [datetime]$currentDateTime = $m.Groups['date'].Value -replace ',', '.'
+        # Check if thread exists, if not make it.
+        if (-not ($parsed.ContainsKey($threadMatch))) {
+          Write-Verbose "New thread detected: $threadMatch"
+          $null = $parsed.Add(
+            $threadMatch,
+            [ChocoLog]::new(
               $threadMatch,
-              ($m.Groups['date'].Value -replace ',', '.'),
               $file
             )
-          }
+          )
         }
-
-        $currentSession.logs.Add(
+        Write-Verbose "Adding new log line to thread $threadMatch"
+        $parsed.Item($threadMatch).AddLogLine(
           [Log4NetLogLine]::new(
-            [Datetime]($m.Groups['date'].Value -replace ',', '.'),
+            $currentDateTime,
             $threadMatch,
             $m.Groups['level'].Value,
             $m.Groups['message'].Value
-          )) > $null
+          ))
       } else {
+        Write-Verbose "Line did not match regex"
+        Write-Debug $line
         # if it doesn't match regex, append to the previous
-        if ($currentSession) {
-          $currentSession.logs[-1].AppendMessage($line)
+        if ($threadMatch) {
+          Write-Verbose "Appending to existing thread: $threadMatch"
+          $parsed.Item($threadMatch).AppendLastLogLine($line)
         } else {
           # This might happen if the log starts on what should have been a
           # multiline entry... Not very likely
@@ -106,17 +101,15 @@ function Read-ChocoLog {
       }
     }
   }
-  # Write out the last log line!
-  if (-Not $parsed.Contains($currentSession)) {
-    $parsed.Add($currentSession) > $null
-  }
 
   # Doing this at the end since threads can get mixed
-  $parsed | ForEach-Object {
+  $parsed.Keys | ForEach-Object {
+    Write-Verbose "Parsing special logs for: $_"
     # This updates fields like: cli, environment, and configuration
-    $_.ParseSpecialLogs()
+    $parsed.Item($_).ParseSpecialLogs()
   }
 
   # Return the whole parsed object
-  $parsed
+  Write-Verbose "Returning results in desceding order. Count: $($parsed.Count)"
+  $parsed.Values | Sort-Object -Descending Time
 }

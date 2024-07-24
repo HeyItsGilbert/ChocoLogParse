@@ -1,0 +1,223 @@
+2024-07-03 06:44:28,288 14068 [DEBUG] - Cache Folder Lockdown Checks:
+2024-07-03 06:44:28,289 14068 [DEBUG] -  - Elevated State = Failed
+2024-07-03 06:44:28,304 14068 [DEBUG] - The source 'https://licensedpackages.chocolatey.org/api/v2/;https://community.chocolatey.org/api/v2/;REDACTED' evaluated to a 'normal' source type
+2024-07-03 06:44:28,627 14068 [DEBUG] -
+NOTE: Hiding sensitive configuration data! Please double and triple
+ check to be sure no sensitive data is shown, especially if copying
+ output to a gist for review.
+2024-07-03 06:44:28,640 14068 [DEBUG] - Configuration: MaximumDownloadRateBitsPerSecond='0'|
+MaximumDownloadRateBitsPerSecondAutoSet='False'|
+LicensedInformation.LicenseType='Business'|
+LicensedInformation.LicenseIsValid='True'|
+LicensedInformation.LicenseIsTrial='False'|
+LicensedInformation.PauseInTrial='False'|
+LicensedInformation.LicenseUserName='Chocolatey Software, Inc. [100] (cory[at REDACTED])'|
+
+LicensedInformation.LicenseExpirationDate='2026-06-30 12:00:00 AM'|
+LicensedInformation.LicenseNodeCount='100'|
+LicensedInformation.LicensedVersion='6.2.1.0'|
+ChocolateyVersion.Version='2.3.0.0'|
+ChocolateyVersion.IsLegacyVersion='False'|
+ChocolateyVersion.Revision='0'|ChocolateyVersion.IsSemVer2='False'|
+ChocolateyVersion.OriginalVersion='2.3.0.0'|
+ChocolateyVersion.Major='2'|
+ChocolateyVersion.Minor='3'|ChocolateyVersion.Patch='0'|
+ChocolateyVersion.IsPrerelease='False'|
+ChocolateyVersion.HasMetadata='False'|
+LicensedFeatures.UseDownloadCache='True'|
+LicensedFeatures.AllowSynchronization='True'|
+LicensedFeatures.AllowBackgroundServiceOverride='False'|
+LicensedFeatures.UseBackgroundService='False'|
+LicensedFeatures.UseBackgroundServiceWithSelfServiceSourcesOnly='True'|
+LicensedFeatures.UseBackgroundServiceWithNonAdministratorsOnly='False'|
+LicensedFeatures.UseBackgroundServiceInteractively='False'|
+LicensedFeatures.UseBackgroundServiceWithEmptySessions='True'|
+LicensedFeatures.AllowBackgroundServiceUninstallsFromUserInstallsOnly='False'|
+
+LicensedFeatures.AllowPreviewFeatures='True'|
+LicensedFeatures.ShowAllPackagesInProgramsAndFeatures='False'|
+LicensedFeatures.AdminOnlyExecutionForAllChocolateyCommands='False'|
+LicensedFeatures.AdminOnlyExecutionForNewCommand='False'|
+LicensedFeatures.AdminOnlyExecutionForDownloadCommand='False'|
+LicensedFeatures.ReduceInstalledPackageSize='True'|
+LicensedFeatures.ReduceOnlyNupkgSize='False'|
+LicensedFeatures.UseLocalSystemForServiceInstalls='True'|
+LicensedFeatures.WarnOnUpcomingLicenseExpiration='True'|
+LicensedFeatures.UseChocolateyCentralManagement='False'|
+LicensedFeatures.UseChocolateyCentralManagementDeployments='False'|
+LicensedFeatures.UseLogRetentionPolicy='True'|
+LicensedFeatures.ExcludeChocolateyPackagesDuringUpgradeAll='False'|
+LicensedNewCommand.UseOriginalFilesLocation='False'|
+LicensedNewCommand.PauseOnError='False'|
+LicensedNewCommand.BuildPackage='False'|
+LicensedNewCommand.GeneratePackagesFromSoftwareInstalls='False'|
+LicensedNewCommand.IncludeArchitectureInPackageId='False'|
+LicensedDownloadCommand.Internalize='False'|
+LicensedDownloadCommand.AppendUseOriginalLocation='True'|
+LicensedDownloadCommand.InternalizeAnyUrlFound='False'|
+LicensedDownloadCommand.DownloadInstalledPackages='False'|
+LicensedDownloadCommand.IgnoreUnfoundPackages='False'|
+LicensedConvertCommand.IncludeAll='False'|
+LicensedConvertCommand.IncludeDependencies='False'|
+LicensedPushCommand.IntuneAuthenticationUrl='https://login.microsoftonline.com'|
+
+LicensedPushCommand.IntuneApiUrl='https://graph.microsoft.com'|
+LicensedPushCommand.IntuneRetryIntervalInSeconds='5'|
+LicensedPushCommand.IntuneUploadTimeoutInSeconds='600'|
+LicensedPushCommand.IntuneUploadChunkSizeInMegabytes='10'|
+LicensedPushCommand.SkipCleanup='False'|
+LicensedListCommand.ShowAuditInformation='False'|
+LicensedListCommand.ShowDisplayVersion='False'|
+LicensedUninstallCommand.FromProgramsAndFeatures='False'|
+VirusConfiguration.VirusCheckMinimumPositives='4'|
+VirusConfiguration.VirusScannerType='Generic'|
+VirusConfiguration.GenericVirusScannerArgs=''[[File]]''|
+VirusConfiguration.GenericVirusScannerValidExitCodes='0'|
+VirusConfiguration.GenericVirusScannerTimeoutInSeconds='120'|
+LicensedServiceInstaller.DefaultUserName='ChocolateyLocalAdmin'|
+CentralManagementConfiguration.ReportPackagesTimerIntervalInSeconds='1800'|
+
+CentralManagementConfiguration.ReceiveTimeoutInSeconds='30'|
+CentralManagementConfiguration.SendTimeoutInSeconds='30'|
+CentralManagementConfiguration.CertificateValidationMode='PeerOrChainTrust'|
+
+CentralManagementConfiguration.MaxReceiveMessageSizeInBytes='2147483647'|
+
+CentralManagementConfiguration.DeploymentCheckTimerIntervalInSeconds='180'|
+
+LicensedBackgroundService.LogRetentionPolicyInDays='30'|
+CommandName='pack'|
+CacheLocation='C:\Users\corbob\AppData\Local\Temp\chocolatey'|
+CommandExecutionTimeoutSeconds='2700'|WebRequestTimeoutSeconds='30'|
+Sources='https://licensedpackages.chocolatey.org/api/v2/;https://community.chocolatey.org/api/v2/;REDACTED'|
+
+SourceType='normal'|IncludeConfiguredSources='False'|
+ShowOnlineHelp='False'|Debug='False'|Verbose='False'|Trace='False'|
+Force='False'|Noop='False'|HelpRequested='False'|
+UnsuccessfulParsing='False'|RegularOutput='False'|QuietOutput='False'|
+PromptForConfirmation='False'|DisableCompatibilityChecks='False'|
+AcceptLicense='False'|AllowUnofficialBuild='False'|AllVersions='False'|
+SkipPackageInstallProvider='False'|SkipHookScripts='False'|
+Prerelease='False'|ForceX86='False'|OverrideArguments='False'|
+NotSilent='False'|ApplyPackageParametersToDependencies='False'|
+ApplyInstallArgumentsToDependencies='False'|IgnoreDependencies='False'|
+CacheExpirationInMinutes='30'|AllowDowngrade='False'|
+ForceDependencies='False'|PinPackage='False'|
+Information.PlatformType='Windows'|
+Information.PlatformVersion='10.0.19045.0'|
+Information.PlatformName='Windows 10'|
+Information.ChocolateyVersion='2.3.0.0'|
+Information.ChocolateyProductVersion='2.3.0'|
+Information.FullName='choco, Version=2.3.0.0, Culture=neutral, PublicKeyToken=79d02ea9cad655eb'|
+
+Information.Is64BitOperatingSystem='True'|
+Information.Is64BitProcess='True'|Information.IsInteractive='True'|
+Information.UserName='corbob'|
+Information.UserDomainName='CORBOB-MACBOOK'|
+Information.IsUserAdministrator='True'|
+Information.IsUserSystemAccount='False'|
+Information.IsUserRemoteDesktop='False'|
+Information.IsUserRemote='False'|Information.IsProcessElevated='False'|
+Information.IsLicensedVersion='True'|
+Information.IsLicensedAssemblyLoaded='True'|
+Information.LicenseType='Business'|
+Information.CurrentDirectory='C:\Users\corbob\AppData\Local\Temp\c4a2a6b5-c1d3-47f2-835a-6db4aea906fe\packages\test_package_1'|
+
+Features.AutoUninstaller='True'|Features.ChecksumFiles='True'|
+Features.AllowEmptyChecksums='False'|
+Features.AllowEmptyChecksumsSecure='True'|
+Features.FailOnAutoUninstaller='False'|
+Features.FailOnStandardError='False'|Features.UsePowerShellHost='True'|
+Features.LogEnvironmentValues='False'|Features.LogWithoutColor='False'|
+Features.VirusCheck='False'|
+Features.FailOnInvalidOrMissingLicense='False'|
+Features.IgnoreInvalidOptionsSwitches='True'|
+Features.UsePackageExitCodes='True'|
+Features.UseEnhancedExitCodes='False'|
+Features.UseFipsCompliantChecksums='False'|
+Features.ShowNonElevatedWarnings='True'|
+Features.ShowDownloadProgress='True'|
+Features.StopOnFirstPackageFailure='False'|
+Features.UseRememberedArgumentsForUpgrades='False'|
+Features.IgnoreUnfoundPackagesOnUpgradeOutdated='False'|
+Features.SkipPackageUpgradesWhenNotInstalled='False'|
+Features.RemovePackageInformationOnUninstall='False'|
+Features.ExitOnRebootDetected='False'|
+Features.LogValidationResultsOnWarnings='True'|
+Features.UsePackageRepositoryOptimizations='True'|
+Features.UsePackageHashValidation='False'|
+ListCommand.LocalOnly='False'|
+ListCommand.IdOnly='False'|ListCommand.IncludeRegistryPrograms='False'|
+ListCommand.PageSize='25'|ListCommand.Exact='False'|
+ListCommand.ByIdOnly='False'|ListCommand.ByTagOnly='False'|
+ListCommand.IdStartsWith='False'|ListCommand.OrderByPopularity='False'|
+ListCommand.ApprovedOnly='False'|
+ListCommand.DownloadCacheAvailable='False'|
+ListCommand.NotBroken='False'|
+ListCommand.IncludeVersionOverrides='False'|
+ListCommand.ExplicitPageSize='False'|
+ListCommand.ExplicitSource='False'|
+UpgradeCommand.FailOnUnfound='False'|
+UpgradeCommand.FailOnNotInstalled='False'|
+UpgradeCommand.NotifyOnlyAvailableUpgrades='False'|
+UpgradeCommand.ExcludePrerelease='False'|
+UpgradeCommand.IgnorePinned='False'|
+NewCommand.AutomaticPackage='False'|
+NewCommand.UseOriginalTemplate='False'|SourceCommand.Command='unknown'|
+SourceCommand.Priority='0'|SourceCommand.BypassProxy='False'|
+SourceCommand.AllowSelfService='False'|
+SourceCommand.VisibleToAdminsOnly='False'|
+FeatureCommand.Command='unknown'|ConfigCommand.Command='Unknown'|
+ApiKeyCommand.Command='Unknown'|
+PushCommand.DefaultSource='https://push.chocolatey.org/'|
+PinCommand.Command='Unknown'|OutdatedCommand.IgnorePinned='False'|
+ExportCommand.IncludeVersionNumbers='False'|Proxy.BypassOnLocal='True'|
+TemplateCommand.Command='unknown'|CacheCommand.Command='Unknown'|
+CacheCommand.RemoveExpiredItemsOnly='False'|
+2024-07-03 06:44:28,641 14068 [DEBUG] - _ Chocolatey:ChocolateyPackCommand - Normal Run Mode _
+2024-07-03 06:44:28,865 14068 [INFO ] - Attempting to build package from 'test_package_1.nuspec'.
+2024-07-03 06:44:28,998 14068 [INFO ] - Successfully created package 'C:\Users\corbob\AppData\Local\Temp\c4a2a6b5-c1d3-47f2-835a-6db4aea906fe\packages\test_package_1\test_package_1.1.3.0.nupkg'
+2024-07-03 06:44:29,000 14068 [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
+2024-07-03 06:44:29,002 14068 [DEBUG] - [Countdown] Determining how long until license expires
+2024-07-03 06:44:29,004 14068 [DEBUG] - Exiting with 0
+2024-07-03 06:44:46,011 18380 [DEBUG] - XmlConfiguration is now operational
+2024-07-03 06:44:46,031 18380 [DEBUG] - Evaluating license file found at 'C:\ProgramData\chocolatey\license\chocolatey.license.xml'
+2024-07-03 06:44:46,499 6432 [DEBUG] - XmlConfiguration is now operational
+2024-07-03 06:44:46,520 6432 [DEBUG] - Evaluating license file found at 'C:\ProgramData\chocolatey\license\chocolatey.license.xml'
+2024-07-03 06:44:46,630 18380 [DEBUG] - Loading up 'chocolatey.licensed' assembly type from 'C:\ProgramData\chocolatey\extensions\chocolatey\chocolatey.licensed.dll'
+2024-07-03 06:44:46,634 18380 [DEBUG] - Minimum Chocolatey Version: '2.0.0'
+2024-07-03 06:44:46,637 18380 [DEBUG] - Current Chocolatey Version: '2.3.0.0'
+2024-07-03 06:44:46,638 18380 [DEBUG] - Current Chocolatey Licensed Version: '6.2.1.0'
+2024-07-03 06:44:46,664 18380 [DEBUG] - Adding new type 'CygwinService' for type 'IAlternativeSourceRunner' from assembly 'choco'
+2024-07-03 06:44:46,665 18380 [DEBUG] - Adding new type 'CygwinService' for type 'IInstallSourceRunner' from assembly 'choco'
+2024-07-03 06:44:46,666 18380 [DEBUG] - Adding new type 'PythonService' for type 'IAlternativeSourceRunner' from assembly 'choco'
+2024-07-03 06:44:46,667 18380 [DEBUG] - Adding new type 'PythonService' for type 'IListSourceRunner' from assembly 'choco'
+2024-07-03 06:44:46,667 18380 [DEBUG] - Adding new type 'PythonService' for type 'IInstallSourceRunner' from assembly 'choco'
+2024-07-03 06:44:46,668 18380 [DEBUG] - Adding new type 'PythonService' for type 'IUninstallSourceRunner' from assembly 'choco'
+2024-07-03 06:44:46,669 18380 [DEBUG] - Adding new type 'RubyGemsService' for type 'IAlternativeSourceRunner' from assembly 'choco'
+2024-07-03 06:44:46,670 18380 [DEBUG] - Adding new type 'RubyGemsService' for type 'IListSourceRunner' from assembly 'choco'
+2024-07-03 06:44:46,670 18380 [DEBUG] - Adding new type 'RubyGemsService' for type 'IInstallSourceRunner' from assembly 'choco'
+2024-07-03 06:44:46,672 18380 [DEBUG] - Adding new type 'SystemStateValidation' for type 'IValidation' from assembly 'choco'
+2024-07-03 06:44:46,673 18380 [DEBUG] - Adding new type 'CacheFolderLockdownValidation' for type 'IValidation' from assembly 'choco'
+2024-07-03 06:44:46,820 12720 [DEBUG] - XmlConfiguration is now operational
+2024-07-03 06:44:46,837 12720 [DEBUG] - Evaluating license file found at 'C:\ProgramData\chocolatey\license\chocolatey.license.xml'
+2024-07-03 06:44:47,034 18380 [DEBUG] - Adding new type 'EmptyOrInvalidUrlMetadataRule' for type 'IMetadataRule' from assembly 'choco'
+2024-07-03 06:44:47,035 18380 [DEBUG] - Adding new type 'FrameWorkReferencesMetadataRule' for type 'IMetadataRule' from assembly 'choco'
+2024-07-03 06:44:47,036 18380 [DEBUG] - Adding new type 'IconMetadataRule' for type 'IMetadataRule' from assembly 'choco'
+2024-07-03 06:44:47,037 18380 [DEBUG] - Adding new type 'LicenseMetadataRule' for type 'IMetadataRule' from assembly 'choco'
+2024-07-03 06:44:47,038 18380 [DEBUG] - Adding new type 'PackageTypesMetadataRule' for type 'IMetadataRule' from assembly 'choco'
+2024-07-03 06:44:47,039 18380 [DEBUG] - Adding new type 'ReadmeMetadataRule' for type 'IMetadataRule' from assembly 'choco'
+2024-07-03 06:44:47,039 18380 [DEBUG] - Adding new type 'RepositoryMetadataRule' for type 'IMetadataRule' from assembly 'choco'
+2024-07-03 06:44:47,040 18380 [DEBUG] - Adding new type 'RequireLicenseAcceptanceMetadataRule' for type 'IMetadataRule' from assembly 'choco'
+2024-07-03 06:44:47,041 18380 [DEBUG] - Adding new type 'ServicableMetadataRule' for type 'IMetadataRule' from assembly 'choco'
+2024-07-03 06:44:47,042 18380 [DEBUG] - Adding new type 'VersionMetadataRule' for type 'IMetadataRule' from assembly 'choco'
+2024-07-03 06:44:47,047 6432 [DEBUG] - Loading up 'chocolatey.licensed' assembly type from 'C:\ProgramData\chocolatey\extensions\chocolatey\chocolatey.licensed.dll'
+2024-07-03 06:44:47,049 18380 [DEBUG] - Registering new command 'cache' in assembly 'choco'
+2024-07-03 06:44:47,050 18380 [DEBUG] - Registering new command 'list' in assembly 'choco'
+2024-07-03 06:44:47,051 18380 [DEBUG] - Registering new command 'rule' in assembly 'choco'
+2024-07-03 06:44:47,052 18380 [DEBUG] - Registering new command 'template' in assembly 'choco'
+2024-07-03 06:44:47,053 6432 [DEBUG] - Current Chocolatey Version: '2.3.0.0'
+2024-07-03 06:44:47,054 6432 [DEBUG] - Current Chocolatey Licensed Version: '6.2.1.0'
+2024-07-03 06:44:47,058 18380 [DEBUG] - Registering new command 'info' in assembly 'choco'
+2024-07-03 06:44:47,059 18380 [DEBUG] - Registering new command 'help' in assembly 'choco'
+2024-07-03 06:44:47,060 18380 [DEBUG] - Registering new command 'config' in assembly 'choco'
