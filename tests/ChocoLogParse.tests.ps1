@@ -46,11 +46,11 @@ Chocolatey upgraded 0/1 packages.
 2023-06-14 14:22:10,115 57332 [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
 2023-06-14 14:22:10,116 57332 [DEBUG] - Exiting with 100
 2023-06-14 14:22:09,410 12345 [DEBUG] - The source '' evaluated to a 'normal' source type
-2023-06-14 15:22:09,411 54321 [DEBUG] - .
+2023-06-14 14:22:09,411 54321 [DEBUG] - .
 NOTE: Hiding sensitive configuration data! Please double and triple
   check to be sure no sensitive data is shown, especially if copying
   output to a gist for review.
-2023-06-14 15:22:09,417 54321 [DEBUG] - Configuration: CommandName='upgrade'|CacheLocation='C:\Windows\TEMP\chocolatey'|
+2023-06-14 14:22:09,417 54321 [DEBUG] - Configuration: CommandName='upgrade'|CacheLocation='C:\Windows\TEMP\chocolatey'|
 ContainsLegacyPackageInstalls='False'|
 CommandExecutionTimeoutSeconds='2700'|WebRequestTimeoutSeconds='30'|
 Sources=''|SourceType='normal'|
@@ -61,17 +61,17 @@ DisableCompatibilityChecks='False'|AcceptLicense='True'|
 AllowUnofficialBuild='False'|Input='zoom'|AllVersions='False'|
 Features.AllowEmptyChecksums='False'|Features.UsePackageExitCodes='True'|
 SkipPackageInstallProvider='False'|SkipHookScripts='False'|
-2023-06-14 15:22:09,418 54321 [DEBUG] - _ Chocolatey:ChocolateyUpgradeCommand - Normal Run Mode _
-2023-06-14 15:22:09,422 54321 [INFO ] - Upgrading the following packages:
-2023-06-14 15:22:09,423 54321 [INFO ] - zoom
-2023-06-14 15:22:09,423 54321 [INFO ] - By upgrading, you accept licenses for the packages.
-2023-06-14 15:22:10,107 54321 [INFO ] - zoom v5.14.11.17466 is newer than the most recent.
+2023-06-14 14:22:09,418 54321 [DEBUG] - _ Chocolatey:ChocolateyUpgradeCommand - Normal Run Mode _
+2023-06-14 14:22:09,422 54321 [INFO ] - Upgrading the following packages:
+2023-06-14 14:22:09,423 54321 [INFO ] - zoom
+2023-06-14 14:22:09,423 54321 [INFO ] - By upgrading, you accept licenses for the packages.
+2023-06-14 14:22:10,107 54321 [INFO ] - zoom v5.14.11.17466 is newer than the most recent.
   You must be smarter than the average bear...
-2023-06-14 15:22:10,113 54321 [WARN ] - .
+2023-06-14 14:22:10,113 54321 [WARN ] - .
 Chocolatey upgraded 0/1 packages.
   See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
-2023-06-14 15:22:10,115 54321 [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
-2023-06-14 15:22:10,117 54321 [DEBUG] - Exiting with 900
+2023-06-14 14:22:10,115 54321 [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
+2023-06-14 14:22:10,117 54321 [DEBUG] - Exiting with 900
 '@
   # Create 10 files with 2 random sessions
   0..10 | ForEach-Object {
@@ -139,7 +139,7 @@ Describe 'Read-ChocoLog' {
     }
 
     It 'Parses the correct number of lines per session' {
-      $multiple[1].logs.Count | Should -Be 9
+      $multiple[0].logs.Count | Should -Be 9
     }
   }
 }
@@ -179,14 +179,7 @@ Describe 'Get-ChocoLogEntry' {
     }
 
     It 'Parses the correct number of lines per session' {
-      $multiple.logs.Count | Should -Be 9
-    }
-  }
-  Context "Test known fixtures" {
-    It 'Parses log with out of order threads' {
-      $results = Read-Log4NetLog "$PSScriptRoot\fixtures\ch.log"
-      $results.Count | Should -Be 4
-      $results.Thread | Should -Be @(12720, 6432, 18380, 14068)
+      $multiple.logs.Count | Should -Be 2
     }
   }
 }

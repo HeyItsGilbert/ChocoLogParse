@@ -1,7 +1,7 @@
 ---
 external help file: ChocoLogParse-help.xml
 Module Name: ChocoLogParse
-online version: https://heyitsgilbert.github.io/ChocoLogParse/en-US/Get-ChocoLogEntry/
+online version:
 schema: 2.0.0
 ---
 
@@ -33,7 +33,9 @@ Grabs the laste entry from the latest log
 ## PARAMETERS
 
 ### -Path
-{{ Fill Path Description }}
+The log path you want to parse.
+This will default to the latest local log.
+This can be a directory of logs.
 
 ```yaml
 Type: String[]
@@ -48,7 +50,8 @@ Accept wildcard characters: False
 ```
 
 ### -Filter
-{{ Fill Filter Description }}
+The filter passed to Get Child Item.
+Default to 'chocolatey*.log.'
 
 ```yaml
 Type: String
@@ -63,7 +66,11 @@ Accept wildcard characters: False
 ```
 
 ### -PatternLayout
-{{ Fill PatternLayout Description }}
+The log4net pattern layout used to parse the log.
+It is very unlikely that you
+need to supply this.
+The code expects pattern names: time, session, level, and
+message.
 
 ```yaml
 Type: String
@@ -119,6 +126,3 @@ Works for Windows PowerShell and PowerShell Core (e.g.
 7).
 
 ## RELATED LINKS
-
-[https://heyitsgilbert.github.io/ChocoLogParse/en-US/Get-ChocoLogEntry/](https://heyitsgilbert.github.io/ChocoLogParse/en-US/Get-ChocoLogEntry/)
-
