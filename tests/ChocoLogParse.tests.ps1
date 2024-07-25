@@ -146,40 +146,40 @@ Describe 'Read-ChocoLog' {
 
 Describe 'Get-ChocoLogEntry' {
   BeforeAll {
-    $parsed = Get-ChocoLogEntry -Path $singleFile
-    $multiple = Get-ChocoLogEntry -Path $folder
+    $parsedEntry = Get-ChocoLogEntry -Path $singleFile
+    $multipleEntry = Get-ChocoLogEntry -Path $folder
   }
 
   Context 'For Single File' {
     It 'Parses the correct number of sessions' {
-        ($parsed).Count | Should -Be 1
+        ($parsedEntry).Count | Should -Be 1
     }
 
     It 'Parses the correct number of lines per session' {
-      $parsed.logs.Count | Should -Be 10
+      $parsedEntry.logs.Count | Should -Be 10
     }
 
     It 'Detects the exit code' {
-      $parsed.exitCode | Should -Be 900
+      $parsedEntry.exitCode | Should -Be 900
     }
 
     It 'Detects the right session number' {
-      $parsed.thread | Should -Be 54321
+      $parsedEntry.thread | Should -Be 54321
     }
 
     It 'Has Configuration with Subkeys' {
-      $parsed.Configuration['Features']['UsePackageExitCodes'] | Should -Be 'True'
+      $parsedEntry.Configuration['Features']['UsePackageExitCodes'] | Should -Be 'True'
     }
   }
 
   Context 'For Folder Path' {
     It 'Parses the correct default number of sessions' {
       # Should still only return 1 regardless of folder
-      ($multiple).Count | Should -Be 1
+      ($multipleEntry).Count | Should -Be 1
     }
 
     It 'Parses the correct number of lines per session' {
-      $multiple.logs.Count | Should -Be 2
+      $multipleEntry.logs.Count | Should -Be 2
     }
   }
 }
