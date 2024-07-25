@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.0] Handle Logs with Out of Order Threads
+
+### Added
+
+- Bump Log4NetParse dependency to 1.1.1 which handles threads better.
+- Add TypeAccelerator for ChocoLog
+
+## Removed
+
+- Logs no longer returned for Log4NetLog format. It was suggested that
+  this was noisy.
+
+### Fixes
+
+- Handle when logs that have thread lines that overlap.
+- Fix tests to handle logs dates and ordering.
+
 ## [0.5.0] Add Get-ChocoLogEntry
 
 - Add a new cmdlet that grabs the latest log.

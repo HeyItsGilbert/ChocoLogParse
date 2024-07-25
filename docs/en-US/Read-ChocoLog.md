@@ -45,7 +45,7 @@ Aliases:
 
 Required: False
 Position: 1
-Default value: C:\ProgramData\chocolatey\logs\
+Default value: "$($env:ChocolateyInstall)\logs\"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -107,7 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.ArrayList
+### System.Collections.Generic.List`1[[ChocoLog, PowerShell Class Assembly, Version=1.0.0.3, Culture=neutral, PublicKeyToken=null]]
 ## NOTES
 Works for Windows PowerShell and PowerShell Core.
 This works on Linux.

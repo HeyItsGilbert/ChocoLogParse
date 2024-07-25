@@ -3,7 +3,7 @@
         Target = 'CurrentUser'
     }
     'Pester' = @{
-        Version = '5.5.0'
+        Version = '5.6.1'
         Parameters = @{
             SkipPublisherCheck = $true
         }
@@ -21,6 +21,6 @@
         Version = '1.19.1'
     }
     'Log4NetParse' = @{
-        Version = '0.4.0'
+        Version = '1.1.1'
     }
 }

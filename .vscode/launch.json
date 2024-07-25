@@ -10,7 +10,8 @@
         "-Task Test",
         "-Verbose"
       ],
-      "cwd": "${workspaceFolder}"
+      "cwd": "${workspaceFolder}",
+      "createTemporaryIntegratedConsole": true
     }
   ]
 }

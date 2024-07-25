@@ -23,9 +23,6 @@
           <TableColumnHeader>
             <Label>Command Line</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Log Lines</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -51,9 +48,6 @@
                 <ScriptBlock>
                 [String]::Format("{0}", ($_.cli -replace '"C:\\ProgramData\\chocolatey\\choco.exe"', 'choco'))
                 </ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>logs</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
             <Wrap/>
