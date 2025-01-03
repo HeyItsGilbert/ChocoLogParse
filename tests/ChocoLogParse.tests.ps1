@@ -1,3 +1,4 @@
+# cSpell:ignore BHPS Ffoo Subkeys
 BeforeDiscovery {
   $manifest = Import-PowerShellDataFile -Path $env:BHPSModuleManifest
   $outputDir = Join-Path -Path $env:BHProjectPath -ChildPath 'Output'
@@ -98,30 +99,30 @@ Chocolatey upgraded 0/1 packages.
 
 Describe 'Read-ChocoLog' {
   BeforeAll {
-    $parsed = Read-ChocoLog -Path $singleFile
-    $multiple = Read-ChocoLog -Path $folder
-    $moreLimit = Read-ChocoLog -Path $folder -FileLimit 10
+    $script:parsed = Read-ChocoLog -Path $singleFile
+    $script:multiple = Read-ChocoLog -Path $folder
+    $script:moreLimit = Read-ChocoLog -Path $folder -FileLimit 10
   }
 
   Context 'For Single File' {
     It 'Parses the correct number of sessions' {
-        ($parsed).Count | Should -Be 3
+        ($script:parsed).Count | Should -Be 3
     }
 
     It 'Parses the correct number of lines per session' {
-      $parsed[1].logs.Count | Should -Be 10
+      $script:parsed[1].logs.Count | Should -Be 10
     }
 
     It 'Detects the exit code' {
-      $parsed[1].exitCode | Should -Be 100
+      $script:parsed[1].exitCode | Should -Be 100
     }
 
     It 'Detects the right session number' {
-      $parsed[1].thread | Should -Be 57332
+      $script:parsed[1].thread | Should -Be 57332
     }
 
     It 'Has Configuration with Subkeys' {
-      $parsed[1].Configuration['Features']['UsePackageExitCodes'] | Should -Be 'True'
+      $script:parsed[1].Configuration['Features']['UsePackageExitCodes'] | Should -Be 'True'
     }
   }
 
@@ -129,57 +130,57 @@ Describe 'Read-ChocoLog' {
     It 'Parses the correct default number of sessions' {
       # There is two sessions in each file and we grab one file by default
       # 1 for $randID and 1 for $randID2
-      ($multiple).Count | Should -Be 2
+      ($script:multiple).Count | Should -Be 2
     }
 
     It 'Parses the correct number of sessions for increased limit' {
       # There is one session in each file so there should be a total of 10
       # 5 for $randID and 5 for $randID2
-      ($moreLimit).Count | Should -Be 20
+      ($script:moreLimit).Count | Should -Be 20
     }
 
     It 'Parses the correct number of lines per session' {
-      $multiple[0].logs.Count | Should -Be 9
+      $script:multiple[0].logs.Count | Should -Be 9
     }
   }
 }
 
 Describe 'Get-ChocoLogEntry' {
   BeforeAll {
-    $parsedEntry = Get-ChocoLogEntry -Path $singleFile
-    $multipleEntry = Get-ChocoLogEntry -Path $folder
+    $script:parsedEntry = Get-ChocoLogEntry -Path $singleFile
+    $script:multipleEntry = Get-ChocoLogEntry -Path $folder
   }
 
   Context 'For Single File' {
     It 'Parses the correct number of sessions' {
-        ($parsedEntry).Count | Should -Be 1
+        ($script:parsedEntry).Count | Should -Be 1
     }
 
     It 'Parses the correct number of lines per session' {
-      $parsedEntry.logs.Count | Should -Be 10
+      $script:parsedEntry.logs.Count | Should -Be 10
     }
 
     It 'Detects the exit code' {
-      $parsedEntry.exitCode | Should -Be 900
+      $script:parsedEntry.exitCode | Should -Be 900
     }
 
     It 'Detects the right session number' {
-      $parsedEntry.thread | Should -Be 54321
+      $script:parsedEntry.thread | Should -Be 54321
     }
 
     It 'Has Configuration with Subkeys' {
-      $parsedEntry.Configuration['Features']['UsePackageExitCodes'] | Should -Be 'True'
+      $script:parsedEntry.Configuration['Features']['UsePackageExitCodes'] | Should -Be 'True'
     }
   }
 
   Context 'For Folder Path' {
     It 'Parses the correct default number of sessions' {
       # Should still only return 1 regardless of folder
-      ($multipleEntry).Count | Should -Be 1
+      ($script:multipleEntry).Count | Should -Be 1
     }
 
     It 'Parses the correct number of lines per session' {
-      $multipleEntry.logs.Count | Should -Be 2
+      $script:multipleEntry.logs.Count | Should -Be 2
     }
   }
 }
