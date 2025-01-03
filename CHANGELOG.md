@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.1] Add Missing Fatal
+
+### Fixes
+
+- Adds missing FATAL from log type by bumping Log4NetParse to 1.1.2.
+
 ## [1.0.0] Handle Logs with Out of Order Threads
 
 ### Added
