@@ -20,7 +20,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 # TODO: Clean up!
-@('foo') | %{ $_ }
+@('foo') | ForEach-Object{ $_ }
 # Bootstrap dependencies
 if ($Bootstrap.IsPresent) {
     Get-PackageProvider -Name Nuget -ForceBootstrap | Out-Null
