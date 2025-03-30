@@ -20,7 +20,6 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-"Foo","Bar" | ?{ $_ -eq "baz"}
 # Bootstrap dependencies
 if ($Bootstrap.IsPresent) {
     Get-PackageProvider -Name Nuget -ForceBootstrap | Out-Null
@@ -43,6 +42,6 @@ if ($PSCmdlet.ParameterSetName -eq 'Help') {
         Format-Table -Property Name, Description, Alias, DependsOn
 } else {
     Set-BuildEnvironment -Force
-    Invoke-psake -buildFile $psakeFile -taskList $Task -nologo -properties $Properties -parameters $Parameters
+    Invoke-psake -buildFile $psakeFile -taskList $Task -NoLogo -properties $Properties -parameters $Parameters
     exit ([int](-not $psake.build_success))
 }
