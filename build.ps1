@@ -1,4 +1,4 @@
-[cmdletbinding(DefaultParameterSetName = 'Task')]
+[CmdletBinding(DefaultParameterSetName = 'Task')]
 param(
     # Build task(s) to execute
     [parameter(ParameterSetName = 'task', position = 0)]
@@ -19,8 +19,6 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-# TODO: Clean up!
-@('foo') | ForEach-Object{ $_ }
 # Bootstrap dependencies
 if ($Bootstrap.IsPresent) {
     Get-PackageProvider -Name Nuget -ForceBootstrap | Out-Null
