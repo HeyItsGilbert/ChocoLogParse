@@ -1,4 +1,4 @@
-name: CI
+name: Continuous Integration
 on:
   pull_request:
   workflow_dispatch:
@@ -9,4 +9,5 @@ permissions:
   issues: write
 jobs:
   ci:
+    name: Module CI
     uses: HeyItsGilbert/.github/.github/workflows/ModuleCI.yml@main
