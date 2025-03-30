@@ -19,6 +19,8 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+
+"Foo","Bar" | ?{ $_ -eq "baz"}
 # Bootstrap dependencies
 if ($Bootstrap.IsPresent) {
     Get-PackageProvider -Name Nuget -ForceBootstrap | Out-Null
