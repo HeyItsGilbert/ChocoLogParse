@@ -1,5 +1,8 @@
 # cSpell:ignore BHPS Ffoo Subkeys
 BeforeDiscovery {
+  if ($null -eq $env:BHPSModuleManifest) {
+    .\build.ps1 -Task Init
+  }
   $manifest = Import-PowerShellDataFile -Path $env:BHPSModuleManifest
   $outputDir = Join-Path -Path $env:BHProjectPath -ChildPath 'Output'
   $outputModDir = Join-Path -Path $outputDir -ChildPath $env:BHProjectName
@@ -106,7 +109,7 @@ Describe 'Read-ChocoLog' {
 
   Context 'For Single File' {
     It 'Parses the correct number of sessions' {
-        ($script:parsed).Count | Should -Be 3
+      ($script:parsed).Count | Should -Be 3
     }
 
     It 'Parses the correct number of lines per session' {
@@ -140,7 +143,8 @@ Describe 'Read-ChocoLog' {
     }
 
     It 'Parses the correct number of lines per session' {
-      $script:multiple[0].logs.Count | Should -Be 9
+      $multiLine = $script:multiple | Where-Object { $_.Thread -eq 8748 }
+      $multiLine.logs.Count | Should -Be 9
     }
   }
 }
@@ -153,7 +157,7 @@ Describe 'Get-ChocoLogEntry' {
 
   Context 'For Single File' {
     It 'Parses the correct number of sessions' {
-        ($script:parsedEntry).Count | Should -Be 1
+      ($script:parsedEntry).Count | Should -Be 1
     }
 
     It 'Parses the correct number of lines per session' {

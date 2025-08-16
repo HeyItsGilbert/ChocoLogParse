@@ -14,7 +14,7 @@ Parses a Chocolatey log into an object that is easier to search and filter.
 
 ```
 Read-ChocoLog [[-Path] <String[]>] [[-FileLimit] <Int32>] [[-Filter] <String>] [[-PatternLayout] <String>]
- [<CommonParameters>]
+ [-NoColor] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,6 +96,22 @@ Aliases:
 Required: False
 Position: 4
 Default value: %date %thread [%-5level] - %message
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoColor
+Disables colored output in the formatter. When specified, the output will be
+displayed without ANSI color codes.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
