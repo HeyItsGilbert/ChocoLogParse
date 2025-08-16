@@ -17,8 +17,7 @@ BeforeDiscovery {
 
 BeforeAll {
   # Setup dummy data including things across multiple lines
-  $folder = "TestDrive:\folder"
-  New-Item -Path "TestDrive:\" -Name 'folder' -Type Directory -Force
+  $folder = Join-Path -Path $PSScriptRoot -ChildPath 'fixtures\folder'
   $singleFile = "TestDrive:\test.log"
   # Due to "files.trimTrailingWhitespace" vscode setting, I added some '.'s
   # to the multiline examples
@@ -77,27 +76,6 @@ Chocolatey upgraded 0/1 packages.
 2023-06-14 14:22:10,115 54321 [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
 2023-06-14 14:22:10,117 54321 [DEBUG] - Exiting with 900
 '@
-  # Create 10 files with 2 random sessions
-  0..10 | ForEach-Object {
-    $script:randID = Get-Random -Minimum 1000 -Maximum 99999
-    $script:randID2 = $randID - 100
-    Set-Content "TestDrive:\folder\chocolatey.$("{0:D2}" -F $_).log" -Value @"
-2023-06-14 14:22:09,411 $randId [DEBUG] - Ffoo
-2023-06-14 14:22:09,418 $randId [DEBUG] - _ Chocolatey:ChocolateyUpgradeCommand - Normal Run Mode _
-2023-06-14 14:22:09,422 $randId [INFO ] - Upgrading the following packages:
-2023-06-14 14:22:09,423 $randId [INFO ] - zoom
-2023-06-14 14:22:09,423 $randId [INFO ] - By upgrading, you accept licenses for the packages.
-2023-06-14 14:22:10,107 $randId [INFO ] - zoom v5.14.11.17466 is newer than the most recent.
-  You must be smarter than the average bear...
-2023-06-14 14:22:10,113 $randId [WARN ] - .
-Chocolatey upgraded 0/1 packages.
-  See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
-2023-06-14 14:22:10,115 $randId [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
-2023-06-14 14:22:10,117 $randId [DEBUG] - Exiting with 0
-2023-06-14 15:22:09,411 $randId2 [DEBUG] - Ffoo
-2023-06-14 15:22:10,117 $randId2 [DEBUG] - Exiting with 0
-"@
-  }
 }
 
 Describe 'Read-ChocoLog' {
@@ -143,8 +121,9 @@ Describe 'Read-ChocoLog' {
     }
 
     It 'Parses the correct number of lines per session' {
-      $multiLine = $script:multiple | Where-Object { $_.Thread -eq $script:randId }
-      $multiLine.logs.Count | Should -Be 9
+      $script:multiple.Count | Should -Be 2
+      $script:multiple[0].logs.Count | Should -Be 9
+      $script:multiple[1].logs.Count | Should -Be 2
     }
   }
 }

@@ -36,7 +36,7 @@ function Read-ChocoLog {
   [OutputType([System.Collections.Generic.List[ChocoLog]])]
   param (
     [ValidateScript({
-        if (-Not ($_ | Test-Path) ) {
+        if (-not ($_ | Test-Path) ) {
           throw "File or folder does not exist"
         }
         return $true
@@ -52,10 +52,10 @@ function Read-ChocoLog {
     [switch]
     $NoColor
   )
-  
+
   # Set module-level variable to control coloring in formatter
   $script:ChocoLogNoColor = $NoColor.IsPresent
-  
+
   $files = Get-Item -Path $Path
   if ($files.PSIsContainer) {
     $files = Get-ChildItem -Path $Path -Filter $Filter |
@@ -123,6 +123,7 @@ function Read-ChocoLog {
   }
 
   # Return the whole parsed object
-  Write-Verbose "Returning results in desceding order. Count: $($parsed.Count)"
-  $parsed.Values | Sort-Object -Descending Time
+  Write-Verbose "Returning results in descending order. Count: $($parsed.Count)"
+  $return = $parsed.Values | Sort-Object -Descending Time
+  return $return
 }

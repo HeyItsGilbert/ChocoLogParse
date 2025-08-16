@@ -1,0 +1,14 @@
+2023-06-14 12:22:09,411 82710 [DEBUG] - Ffoo
+2023-06-14 12:22:09,418 82710 [DEBUG] - _ Chocolatey:ChocolateyUpgradeCommand - Normal Run Mode _
+2023-06-14 12:22:09,422 82710 [INFO ] - Upgrading the following packages:
+2023-06-14 12:22:09,423 82710 [INFO ] - zoom
+2023-06-14 12:22:09,423 82710 [INFO ] - By upgrading, you accept licenses for the packages.
+2023-06-14 12:22:10,107 82710 [INFO ] - zoom v5.14.11.17466 is newer than the most recent.
+  You must be smarter than the average bear...
+2023-06-14 12:22:10,113 82710 [WARN ] - .
+Chocolatey upgraded 0/1 packages.
+  See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+2023-06-14 12:22:10,115 82710 [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
+2023-06-14 12:22:10,117 82710 [DEBUG] - Exiting with 0
+2023-06-14 13:10:09,411 82610 [DEBUG] - Ffoo
+2023-06-14 13:10:10,117 82610 [DEBUG] - Exiting with 0
