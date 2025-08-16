@@ -9,6 +9,10 @@
   Get-ChocoLogEntry
 
   Grabs the laste entry from the latest log
+.EXAMPLE
+  Get-ChocoLogEntry -NoColor
+
+  Grabs the latest entry from the latest log without colored output
 .PARAMETER Report
   This changes the output to be more friendly for reporting
 .PARAMETER Path
@@ -20,6 +24,9 @@
   The log4net pattern layout used to parse the log. It is very unlikely that you
   need to supply this. The code expects pattern names: time, session, level, and
   message.
+.PARAMETER NoColor
+  Disables colored output in the formatter. When specified, the output will be
+  displayed without ANSI color codes.
 #>
 function Get-ChocoLogEntry {
   [CmdletBinding()]
@@ -36,7 +43,8 @@ function Get-ChocoLogEntry {
     $Filter = 'chocolatey*.log',
     [string]
     $PatternLayout = '%date %thread [%-5level] - %message',
-    [switch]$Report
+    [switch]$Report,
+    [switch]$NoColor
   )
   # ToDo:
   # - Support searching for a cli entry
@@ -44,7 +52,7 @@ function Get-ChocoLogEntry {
   # - Exit code
   # - Filter to recent time to make sure we get the right one
 
-  $entry = Read-ChocoLog -FileLimit 1 -Path $Path -Filter $Filter -PatternLayout $PatternLayout | Select-Object -Last 1
+  $entry = Read-ChocoLog -FileLimit 1 -Path $Path -Filter $Filter -PatternLayout $PatternLayout -NoColor:$NoColor | Select-Object -Last 1
   if ($report) {
     # Print out in a format that's useful for Chef logging
     Write-Host ('Command: {0}' -F $entry.cli)

@@ -12,6 +12,10 @@
   Read-ChocoLog
 
   This will read the latest Chocolatey.log on the machine.
+.EXAMPLE
+  Read-ChocoLog -NoColor
+
+  This will read the latest Chocolatey.log on the machine without colored output.
 .PARAMETER Path
   The log path you want to parse. This will default to the latest local log.
   This can be a directory of logs.
@@ -23,6 +27,9 @@
   The log4net pattern layout used to parse the log. It is very unlikely that you
   need to supply this. The code expects pattern names: time, session, level, and
   message.
+.PARAMETER NoColor
+  Disables colored output in the formatter. When specified, the output will be
+  displayed without ANSI color codes.
 #>
 function Read-ChocoLog {
   # This makes PlatyPS sad.
@@ -41,8 +48,14 @@ function Read-ChocoLog {
     [String]
     $Filter = 'chocolatey*.log',
     [string]
-    $PatternLayout = '%date %thread [%-5level] - %message'
+    $PatternLayout = '%date %thread [%-5level] - %message',
+    [switch]
+    $NoColor
   )
+  
+  # Set module-level variable to control coloring in formatter
+  $script:ChocoLogNoColor = $NoColor.IsPresent
+  
   $files = Get-Item -Path $Path
   if ($files.PSIsContainer) {
     $files = Get-ChildItem -Path $Path -Filter $Filter |
