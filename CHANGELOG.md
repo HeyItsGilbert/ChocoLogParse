@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.0] Add -NoColor Switch Parameter
+
+### Added
+
+- `-NoColor` switch parameter to both `Read-ChocoLog` and `Get-ChocoLogEntry` functions
+- Module-level variable `$script:ChocoLogNoColor` to control formatter behavior
+- Colored output control in `ChocoLog.format.ps1xml` formatter
+- Documentation and examples for the new parameter
+
+### Fixed
+
+- Undefined `$bg` variable reference in the original formatter
+
 ## [1.0.1] Add Missing Fatal
 
 ### Fixes
