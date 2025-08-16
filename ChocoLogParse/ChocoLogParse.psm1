@@ -10,6 +10,9 @@ foreach ($import in @($enums + $classes + $public )) {
   }
 }
 
+# Initialize module variable for color control (default to colored output)
+$script:ChocoLogNoColor = $false
+
 # Add our custom formatter that needed classes first
 $format = Join-Path -Path $PSScriptRoot -ChildPath 'ChocoLog.format.ps1xml'
 Update-FormatData -PrependPath $format

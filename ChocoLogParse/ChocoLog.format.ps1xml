@@ -36,12 +36,16 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>
-                $style = if ($_.exitCode -eq 0) {
-                  $PSStyle.Foreground.White
+                if ($script:ChocoLogNoColor) {
+                  [String]::Format("{0}", $_.exitCode)
                 } else {
-                  $PSStyle.Foreground.Yellow
+                  $style = if ($_.exitCode -eq 0) {
+                    $PSStyle.Foreground.White
+                  } else {
+                    $PSStyle.Foreground.Yellow
+                  }
+                  [String]::Format("{0}{1}{2}", $style, $_.exitCode, $PSStyle.Reset)
                 }
-                [String]::Format("{0}{1}{2}", $bg, $_.exitCode, $PSStyle.Reset)
                 </ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>

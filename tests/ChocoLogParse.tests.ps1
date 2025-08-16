@@ -1,5 +1,8 @@
 # cSpell:ignore BHPS Ffoo Subkeys
 BeforeDiscovery {
+  if ($null -eq $env:BHPSModuleManifest) {
+    .\build.ps1 -Task Init
+  }
   $manifest = Import-PowerShellDataFile -Path $env:BHPSModuleManifest
   $outputDir = Join-Path -Path $env:BHProjectPath -ChildPath 'Output'
   $outputModDir = Join-Path -Path $outputDir -ChildPath $env:BHProjectName
@@ -14,8 +17,7 @@ BeforeDiscovery {
 
 BeforeAll {
   # Setup dummy data including things across multiple lines
-  $folder = "TestDrive:\folder"
-  New-Item -Path "TestDrive:\" -Name 'folder' -Type Directory -Force
+  $folder = Join-Path -Path $PSScriptRoot -ChildPath 'fixtures\folder'
   $singleFile = "TestDrive:\test.log"
   # Due to "files.trimTrailingWhitespace" vscode setting, I added some '.'s
   # to the multiline examples
@@ -74,27 +76,6 @@ Chocolatey upgraded 0/1 packages.
 2023-06-14 14:22:10,115 54321 [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
 2023-06-14 14:22:10,117 54321 [DEBUG] - Exiting with 900
 '@
-  # Create 10 files with 2 random sessions
-  0..10 | ForEach-Object {
-    $randID = Get-Random -Minimum 1000 -Maximum 99999
-    $randID2 = $randID - 100
-    Set-Content "TestDrive:\folder\chocolatey.$($_).log" -Value @"
-2023-06-14 14:22:09,411 $randId [DEBUG] - Ffoo
-2023-06-14 14:22:09,418 $randId [DEBUG] - _ Chocolatey:ChocolateyUpgradeCommand - Normal Run Mode _
-2023-06-14 14:22:09,422 $randId [INFO ] - Upgrading the following packages:
-2023-06-14 14:22:09,423 $randId [INFO ] - zoom
-2023-06-14 14:22:09,423 $randId [INFO ] - By upgrading, you accept licenses for the packages.
-2023-06-14 14:22:10,107 $randId [INFO ] - zoom v5.14.11.17466 is newer than the most recent.
-  You must be smarter than the average bear...
-2023-06-14 14:22:10,113 $randId [WARN ] - .
-Chocolatey upgraded 0/1 packages.
-  See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
-2023-06-14 14:22:10,115 $randId [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
-2023-06-14 14:22:10,117 $randId [DEBUG] - Exiting with 0
-2023-06-14 15:22:09,411 $randId2 [DEBUG] - Ffoo
-2023-06-14 15:22:10,117 $randId2 [DEBUG] - Exiting with 0
-"@
-  }
 }
 
 Describe 'Read-ChocoLog' {
@@ -106,7 +87,7 @@ Describe 'Read-ChocoLog' {
 
   Context 'For Single File' {
     It 'Parses the correct number of sessions' {
-        ($script:parsed).Count | Should -Be 3
+      ($script:parsed).Count | Should -Be 3
     }
 
     It 'Parses the correct number of lines per session' {
@@ -140,7 +121,9 @@ Describe 'Read-ChocoLog' {
     }
 
     It 'Parses the correct number of lines per session' {
+      $script:multiple.Count | Should -Be 2
       $script:multiple[0].logs.Count | Should -Be 9
+      $script:multiple[1].logs.Count | Should -Be 2
     }
   }
 }
@@ -153,7 +136,7 @@ Describe 'Get-ChocoLogEntry' {
 
   Context 'For Single File' {
     It 'Parses the correct number of sessions' {
-        ($script:parsedEntry).Count | Should -Be 1
+      ($script:parsedEntry).Count | Should -Be 1
     }
 
     It 'Parses the correct number of lines per session' {

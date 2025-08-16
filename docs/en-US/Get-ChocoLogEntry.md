@@ -14,7 +14,7 @@ Defaults to last exection.
 ## SYNTAX
 
 ```
-Get-ChocoLogEntry [[-Path] <String[]>] [[-Filter] <String>] [[-PatternLayout] <String>] [-Report]
+Get-ChocoLogEntry [[-Path] <String[]>] [[-Filter] <String>] [[-PatternLayout] <String>] [-Report] [-NoColor]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -86,6 +86,22 @@ Accept wildcard characters: False
 
 ### -Report
 This changes the output to be more friendly for reporting
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoColor
+Disables colored output in the formatter. When specified, the output will be
+displayed without ANSI color codes.
 
 ```yaml
 Type: SwitchParameter
