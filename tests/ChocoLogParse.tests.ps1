@@ -79,9 +79,9 @@ Chocolatey upgraded 0/1 packages.
 '@
   # Create 10 files with 2 random sessions
   0..10 | ForEach-Object {
-    $randID = Get-Random -Minimum 1000 -Maximum 99999
-    $randID2 = $randID - 100
-    Set-Content "TestDrive:\folder\chocolatey.$($_).log" -Value @"
+    $script:randID = Get-Random -Minimum 1000 -Maximum 99999
+    $script:randID2 = $randID - 100
+    Set-Content "TestDrive:\folder\chocolatey.$("{0:D2}" -F $_).log" -Value @"
 2023-06-14 14:22:09,411 $randId [DEBUG] - Ffoo
 2023-06-14 14:22:09,418 $randId [DEBUG] - _ Chocolatey:ChocolateyUpgradeCommand - Normal Run Mode _
 2023-06-14 14:22:09,422 $randId [INFO ] - Upgrading the following packages:
@@ -143,7 +143,7 @@ Describe 'Read-ChocoLog' {
     }
 
     It 'Parses the correct number of lines per session' {
-      $multiLine = $script:multiple | Where-Object { $_.Thread -eq 8748 }
+      $multiLine = $script:multiple | Where-Object { $_.Thread -eq $script:randId }
       $multiLine.logs.Count | Should -Be 9
     }
   }
